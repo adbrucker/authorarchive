@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:Sources SelectedStyle="" xmlns:b="http://schemas.openxmlformats.org/officeDocument/2006/bibliography"  xmlns="http://schemas.openxmlformats.org/officeDocument/2006/bibliography" >
+<b:Source>
+<b:Tag>brucker-authorarchive-2016</b:Tag>
+<b:SourceType>Proceedings</b:SourceType>
+<b:Year>2016</b:Year>
+<b:ConferenceName>Proceedings of the International Conference on \LaTeX-Hacks</b:ConferenceName>
+<b:Issue>42</b:Issue>
+<b:Author>
+<b:Author><b:NameList>
+<b:Person><b:Last>Brucker</b:Last><b:First>Achim</b:First><b:Middle>D</b:Middle></b:Person>
+</b:NameList></b:Author>
+</b:Author>
+<b:Title>A Simple Example of the authorarchive Package for \LaTeX</b:Title>
+</b:Source>
+</b:Sources>
