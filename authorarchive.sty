@@ -1,0 +1,242 @@
+%% Copyright (C) 2008-2016 Achim D. Brucker, https://www.brucker.ch
+%%
+%% License:
+%%   This program can be redistributed and/or modified under the terms
+%%   of the LaTeX Project Public License Distributed from CTAN
+%%   archives in directory macros/latex/base/lppl.txt; either
+%%   version 1 of the License, or any later version.
+%%   OR
+%%   The 2-clause BSD-style license.
+\NeedsTeXFormat{LaTeX2e}\relax
+\ProvidesClass{authorarchive}[2009/24/03 v0.1 Achim D. Brucker]
+%
+\RequirePackage{ifthen}
+\RequirePackage{graphicx}
+\RequirePackage{hyperref}
+\RequirePackage{eso-pic}
+\RequirePackage{embedfile}
+\RequirePackage{kvoptions}
+\RequirePackage{calc}
+%
+% Option declarations
+% -------------------
+\SetupKeyvalOptions{
+  family=AA,
+  prefix=AA@
+}
+
+\DeclareStringOption[.]{bibtexdir}
+\DeclareStringOption[.]{qrdir}
+\DeclareStringOption[https://git.logicalhacking.com/adbrucker/authorarchive/src/master]{baseurl}
+\DeclareStringOption[.pdf]{suffix}
+\DeclareStringOption[UNKOWN PUBLISHER]{publisher}[]
+\DeclareStringOption[UNKOWN YEAR]{year}[]
+\DeclareStringOption[]{key}[]
+\DeclareStringOption[]{doi}[]
+\DeclareStringOption[]{doiText}[]
+\DeclareStringOption[]{publisherurl}[]
+\DeclareStringOption[1]{startpage}[]
+\DeclareStringOption[UNKNOWN PUBLICATION]{publication}[]
+
+\DeclareBoolOption{ACM}
+\DeclareBoolOption{IEEE}
+\DeclareBoolOption{LNCS}
+\DeclareBoolOption{LNI}
+\DeclareBoolOption{nocopyright}
+\DeclareBoolOption{nourl}
+\DeclareBoolOption{nobib}
+\DeclareBoolOption{ENTCS}
+%\ProcessOptions\relax
+
+
+% Default option rule
+\DeclareDefaultOption{%
+  \ifx\CurrentOptionValue\relax
+  \PackageWarningNoLine{\@currname}{%
+    Unknown option `\CurrentOption'\MessageBreak
+    is passed to package `authorarchive'%
+  }%
+  % Pass the option to package color.
+  % Again it is better to expand \CurrentOption.
+  \expandafter\PassOptionsToPackage\expandafter{\CurrentOption}{color}%
+  \else
+  % Package color does not take options with values.
+  % We provide the standard LaTeX error.
+  \@unknownoptionerror
+  \fi
+}
+\ProcessKeyvalOptions*
+
+
+
+\newlength\AA@x
+\newlength\AA@y
+\newlength\AA@width
+
+\newcommand{\authorcrfont}{\footnotesize}
+\newcommand{\authorat}[1]{\put(100,100){#1}}
+\newcommand{\authorwidth}[1]{\setlength{\AA@width}{#1}}
+\setlength{\AA@width}{\textwidth}
+
+\setcounter{page}{\AA@startpage}
+
+\ifAA@ACM%
+\setkeys{AA}{publisher=ACM}
+\global\boilerplate={}
+\global\copyrightetc={}
+\renewcommand{\conferenceinfo}[2]{}
+\renewcommand{\authorcrfont}{\crnotice}
+\setlength\AA@x{1in+\hoffset+\oddsidemargin}
+\setlength\AA@y{-\textheight+\topmargin+\headheight} % -\voffset-\topmargin-\headheight-\footskip} 
+\renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},\LenToUnit{\AA@y}){#1}}
+\setlength{\AA@width}{\columnwidth}
+\fi
+%%%% LNCS
+\ifAA@LNCS%
+\setkeys{AA}{publisher=Springer-Verlag}
+\setlength\AA@x{1in+\hoffset+\oddsidemargin}
+\renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},27){#1}}
+\renewcommand{\authorcrfont}{\scriptsize}
+\pdfpagesattr{/CropBox [92 65 523 731]}% LNCS page: 152x235 mm
+\setlength{\AA@width}{\textwidth}
+\setcounter{tocdepth}{2}
+\fi
+%
+%%%% LNI
+\ifAA@LNI%
+\setkeys{AA}{publisher=GI}
+\setlength\AA@x{1in+\hoffset+\oddsidemargin}
+\renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},35){#1}}
+\renewcommand{\authorcrfont}{\scriptsize}
+\pdfpagesattr{/CropBox [70 65 526.378 748.15]} % TODO
+\setlength{\AA@width}{\textwidth} 
+\setcounter{tocdepth}{2}
+\fi
+%
+%%%% ENTCS
+\ifAA@ENTCS%
+\addtolength{\voffset}{1cm}
+\setkeys{AA}{publisher=Elsevier Science B.~V.}
+\setlength\AA@x{1in+\hoffset+\oddsidemargin}
+\renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},-250){#1}}
+\renewcommand{\authorcrfont}{\scriptsize}
+\def\@oddfoot{}
+\def\@evenfoot{}
+\def\firstfootline{}
+\headsep 8pt
+\renewcommand\rightheadline{\ifnum\value{page}=\hypergetpageref{FirstPage}\relax
+  \else{\hfil\scriptsize\emph{\lastname / \AA@publication} \hfil {\rmfamily\thepage}}\fi}
+\renewcommand\leftheadline{\scriptsize{\rmfamily\thepage} \hfil \emph{\lastname /
+    \AA@publication}\hfil}
+%  467.717 x 680.315 pts
+% \pdfpagesattr{/CropBox [70 110 535 850]}
+\pdfpagesattr{/CropBox [70 95 535 775]}
+\setlength{\AA@width}{\textwidth}
+\fi
+%
+%%%% IEEE
+\ifAA@IEEE%
+\setkeys{AA}{publisher=IEEE Computer Society}
+\setlength\AA@x{1in+\hoffset+\oddsidemargin}
+\renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},12){#1}}
+\renewcommand{\authorcrfont}{\scriptsize}
+\setlength{\AA@width}{\textwidth}
+\setcounter{tocdepth}{2}
+\fi
+%
+
+\hypersetup{%
+  draft         = false,
+  bookmarksopen = true,
+  bookmarksnumbered= true,
+  pdfauthor     = {\@author},
+  pdftitle      = {\@title},
+}
+
+\ifAA@nobib\relax\else%
+\AtBeginDocument{%
+  \embedfile[filespec=\AA@key.bib,%
+             desc={BibTeX entry of this paper.},%
+             stringmethod=escape,%
+             mimetype=plain/text,%
+  ]{\AA@bibtexdir/\AA@key.bib}%
+  \embedfile[filespec=\AA@key.enw,%
+             desc={Endnote entry of this paper.},%
+             stringmethod=escape,%
+             mimetype=plain/text,%
+  ]{\AA@bibtexdir/\AA@key.enw}%
+  \embedfile[filespec=\AA@key.ris,%
+             desc={RIS entry of this paper.},%
+             stringmethod=escape,%
+             mimetype=plain/text,%
+  ]{\AA@bibtexdir/\AA@key.ris}%
+  \embedfile[filespec=\AA@key.xml,%
+             desc={XML entry of this paper (e.g., for Word 2007 and later).},%
+             stringmethod=escape,%
+             mimetype=plain/text,%
+  ]{\AA@bibtexdir/\AA@key.word.xml}%
+}%
+\fi
+\AtEndDocument{\label{LastPage}}
+
+\AddToShipoutPicture*{%
+  \setlength{\unitlength}{1mm}%
+  \authorat{%
+    \includegraphics[width=1.2cm]{\AA@qrdir/\AA@key-qr.pdf}\hspace{.2cm}%  
+    \authorcrfont\parbox[b]{\AA@width-1.4cm}{
+      \ifAA@LNCS%
+      \AA@publication, pp. \thepage--\pageref{LastPage}, \AA@year.\\%
+      \ifAA@nocopyright\relax\else
+      \textcopyright~\AA@year~\AA@publisher.
+      \fi
+        This is the author's
+        version of the work. It is posted
+        \ifAA@nourl\relax\else%
+        at \url{\AA@baseurl/\AA@key\AA@suffix} %
+        \fi
+        \ifAA@nocopyright\relax\else
+        by permission of \AA@publisher{}
+        \fi
+        for your personal use.
+        \ifx\AA@doi\@empty%
+          \relax
+        \else
+          The definitive
+          version was published with doi:
+           \ifx\AA@doiText\@empty%
+          \href{http://dx.doi.org/\AA@doi}{\AA@doi}.
+          \else
+          \href{http://dx.doi.org/\AA@doi}{\AA@doiText}.
+          \fi
+          \fi
+      \else
+       \ifAA@nocopyright\relax\else
+        \textcopyright~\AA@year~\AA@publisher. %
+        \fi%
+        This is the author's
+        version of the work. It is posted
+        \ifAA@nourl\relax\else%
+        at \url{\AA@baseurl/\AA@key\AA@suffix} %
+        \fi
+        \ifAA@nocopyright\relax\else 
+        by permission of \AA@publisher{} %
+        \fi
+        for your personal use. Not for redistribution. The definitive
+        version was published in \emph{\AA@publication}, pp. \thepage--\pageref{LastPage}, \AA@year%
+        \ifx\AA@doi\@empty%
+          \ifx\AA@publisherurl\@empty%
+            .%
+          \else
+            \url{\AA@publisherurl}.%
+          \fi
+        \else
+          \ifx\AA@doiText\@empty%
+          , doi: \href{http://dx.doi.org/\AA@doi}{\AA@doi}.%
+          \else
+          , doi: \href{http://dx.doi.org/\AA@doi}{\AA@doiText}.%
+          \fi
+          \fi
+      \fi
+    }
+   }
+ }
