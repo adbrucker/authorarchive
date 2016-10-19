@@ -30,6 +30,14 @@ The following layout-styles are pre-defined:
 * `LNI` for the Lecture Notes in Informatics, published by the GI
 * `ENTCS` for the Elsevier ENTCS layout
 
+By re-defining the font command (`authorcrfont{}`) and the command that is
+used for positioning the copyright text (`\authorat{}), the package can 
+be adapted easily to other layouts. For example,
+```tex
+\renewcommand{\authorcrfont}{\scriptsize}
+\renewcommand{\authorat}[1]{\put(25,56.5){#1}}
+```
+works nicely for Acta Informatica. 
 
 ## License
 If not otherwise stated, all sub-projects are dual-licensed under a
