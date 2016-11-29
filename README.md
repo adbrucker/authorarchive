@@ -31,7 +31,7 @@ The following layout-styles are pre-defined:
 * `ENTCS` for the Elsevier ENTCS layout
 
 By re-defining the font command (`authorcrfont{}`) and the command that is
-used for positioning the copyright text (`\authorat{}), the package can 
+used for positioning the copyright text (`\authorat{}`), the package can 
 be adapted easily to other layouts. For example,
 ```tex
 \renewcommand{\authorcrfont}{\scriptsize}
