@@ -37,7 +37,15 @@ be adapted easily to other layouts. For example,
 \renewcommand{\authorcrfont}{\scriptsize}
 \renewcommand{\authorat}[1]{\put(25,56.5){#1}}
 ```
-works nicely for Acta Informatica. 
+works nicely for Acta Informatica.
+
+## Embedding Bibliography Entries
+Mostly, it is hard for scientists to find the correct bibtex entry for a paper.
+One solution to this issue is to embed the respective `.bib`, `.enw`, `.ris`, or `.word.xml` file in the PDF directly.
+This work allows for that.
+In case any of these file exist in the current directory, it gets embedded in the PDF.
+
+You can generate these files by using [JabRef's export functionalities](https://help.jabref.org/en/#importexport).
 
 ## License
 If not otherwise stated, all sub-projects are dual-licensed under a

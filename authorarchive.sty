@@ -153,26 +153,38 @@
 
 \ifAA@nobib\relax\else%
 \AtBeginDocument{%
+  \IfFileExists{\AA@bibtexdir/\AA@key.bib}{%
   \embedfile[filespec=\AA@key.bib,%
              desc={BibTeX entry of this paper.},%
              stringmethod=escape,%
              mimetype=plain/text,%
-  ]{\AA@bibtexdir/\AA@key.bib}%
+  ]{\AA@bibtexdir/\AA@key.bib}}{
+    \typeout{No file \AA@bibtexdir/\AA@key.bib found. Not embedded reference in BibTeX format.}
+  }%
+  \IfFileExists{\AA@bibtexdir/\AA@key.enw}{%
   \embedfile[filespec=\AA@key.enw,%
              desc={Endnote entry of this paper.},%
              stringmethod=escape,%
              mimetype=plain/text,%
-  ]{\AA@bibtexdir/\AA@key.enw}%
+  ]{\AA@bibtexdir/\AA@key.enw}}{
+    \typeout{No file \AA@bibtexdir/\AA@key.enw found. Not embedded reference in Endnote format.}
+  }%
+  \IfFileExists{\AA@bibtexdir/\AA@key.ris}{%
   \embedfile[filespec=\AA@key.ris,%
              desc={RIS entry of this paper.},%
              stringmethod=escape,%
              mimetype=plain/text,%
-  ]{\AA@bibtexdir/\AA@key.ris}%
+  ]{\AA@bibtexdir/\AA@key.ris}}{
+    \typeout{No file \AA@bibtexdir/\AA@key.ris found. Not embedded reference in RIS format.}
+  }%
+  \IfFileExists{\AA@bibtexdir/\AA@key.word.xml}{%
   \embedfile[filespec=\AA@key.xml,%
              desc={XML entry of this paper (e.g., for Word 2007 and later).},%
              stringmethod=escape,%
              mimetype=plain/text,%
-  ]{\AA@bibtexdir/\AA@key.word.xml}%
+  ]{\AA@bibtexdir/\AA@key.word.xml}}{
+    \typeout{No file \AA@bibtexdir/\AA@key.word.xml found. Not embedded reference for Word 2007 and later.}
+  }%
 }%
 \fi
 \AtEndDocument{\label{LastPage}}
