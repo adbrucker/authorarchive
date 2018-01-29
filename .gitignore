@@ -1,5 +1,5 @@
 llncs.cls
-
+*.bak?
 
 # Created by https://www.gitignore.io/api/tex,macos,windows
 

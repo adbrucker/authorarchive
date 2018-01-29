@@ -9,6 +9,7 @@
   * [Boolean Switches](#boolean-switches)
   * [Key/Value Options](#keyvalue-options)
 - [Embedding Bibliography Entries](#embedding-bibliography-entries)
+- [Development](#development)
 - [Alternative Packages](#alternative-packages)
 - [License](#license)
 
@@ -80,6 +81,11 @@ In case any of these file exist in the current directory, it gets embedded in th
 
 You can generate these files by using [JabRef's export functionalities](https://help.jabref.org/en/#importexport).
 
+## Development
+You can fix the indent of `authorarchive.sty` by using [latexindent](https://ctan.org/pkg/latexindent) as follows:
+
+    latexindent -l -s -sl -w authorarchive.sty
+
 ## Alternative Packages
 The package [coverpage](https://ctan.org/pkg/coverpage) prepends a separate PDF page before the first page of the paper.
 That page contains the bibliographic information as BibTeX entry.
@@ -89,7 +95,6 @@ With `authorarchive`, the information is printed at the bottom of the first page
 The package [llncsconf](https://github.com/adbrucker/llncsconf) is a light-weight alternative to this package.
 It supports [LNCS](http://www.springer.com/de/it-informatik/lncs) only.
 In comparison to `authorarchive`, it provides support for the additional publication states "intended-to-submit" and "submitted", but no QR code and links to the author's archive URL.
-
 
 ## License
 If not otherwise stated, all sub-projects are dual-licensed under a
