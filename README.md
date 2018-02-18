@@ -87,11 +87,6 @@ In case any of these file exist in the current directory, it gets embedded in th
 
 You can generate these files by using [JabRef's export functionalities](https://help.jabref.org/en/#importexport).
 
-## Development
-You can fix the indent of `authorarchive.sty` by using [latexindent](https://ctan.org/pkg/latexindent) as follows:
-
-    latexindent -l -s -sl -w authorarchive.sty
-
 ## Alternative Packages
 The package [coverpage](https://ctan.org/pkg/coverpage) prepends a separate PDF page before the first page of the paper.
 That page contains the bibliographic information as BibTeX entry.
