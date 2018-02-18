@@ -1,6 +1,7 @@
 # authorarchive
 
-> A LaTeX style for producing author self-archiving copies of (academic) papers.
+> A LaTeX style for producing author self-archiving copies of
+> (academic) papers.
 
 <!-- toc -->
 
@@ -76,8 +77,8 @@ works nicely for Acta Informatica.
 The package also defines a command `\authorsetup{}` which allows to
 define key value options dynamically. Moreover, if a file
 `authorarchive.config` exists in the LaTeX search path, it will be
-loaded automatically. This allows for configuring defaults
-(e.g., the baseurl) easily.
+loaded automatically. This allows for configuring defaults (e.g., the
+baseurl) easily.
 
 ## Embedding Bibliography Entries
 Mostly, it is hard for scientists to find the correct bibtex entry for
@@ -93,14 +94,21 @@ references easily.
 
 
 ## Alternative Packages
-The package [coverpage](https://ctan.org/pkg/coverpage) prepends a separate PDF page before the first page of the paper.
-That page contains the bibliographic information as BibTeX entry.
-One is forced to have a `.bib` file ready and multiple institutions are not well supported.
-With `authorarchive`, the information is printed at the bottom of the first page of the paper and required links to the publisher are generated.
+The package [coverpage](https://ctan.org/pkg/coverpage) prepends a
+separate PDF page before the first page of the paper.  That page
+contains the bibliographic information as BibTeX entry.  One is forced
+to have a `.bib` file ready and multiple institutions are not well
+supported.  With `authorarchive`, the information is printed at the
+bottom of the first page of the paper and required links to the
+publisher are generated.
 
-The package [llncsconf](https://git.logicalhacking.com/adbrucker/llncsconf) is a light-weight alternative to this package.
-It supports [LNCS](http://www.springer.com/de/it-informatik/lncs) only.
-In comparison to `authorarchive`, it provides support for the additional publication states "intended-to-submit" and "submitted", but no QR code and links to the author's archive URL.
+The package
+[llncsconf](https://git.logicalhacking.com/adbrucker/llncsconf) is a
+light-weight alternative to this package.  It supports
+[LNCS](http://www.springer.com/de/it-informatik/lncs) only.  In
+comparison to `authorarchive`, it provides support for the additional
+publication states "intended-to-submit" and "submitted", but no QR
+code and links to the author's archive URL.
 
 ## Authors
 Main author: [Achim D. Brucker](http://www.brucker.ch/)
