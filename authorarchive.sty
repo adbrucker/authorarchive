@@ -27,7 +27,7 @@
 }
 
 \DeclareStringOption[.]{bibtexdir}
-\DeclareStringOption[https://git.logicalhacking.com/adbrucker/authorarchive/src/master]{baseurl}
+\DeclareStringOption[https://duckduckgo.com/?q=]{baseurl}
 \DeclareStringOption[.pdf]{suffix}
 \DeclareStringOption[UNKOWN PUBLISHER]{publisher}[]
 \DeclareStringOption[UNKOWN YEAR]{year}[]
@@ -66,6 +66,13 @@
   \fi
 }
 \ProcessKeyvalOptions*
+
+% Provide command for dynamic configuration seutp
+\def\authorsetup{\kvsetkeys{AA}}
+
+% Load local configuration
+\InputIfFileExists{authorarchive.config}{}{}
+
 
 \newlength\AA@x
 \newlength\AA@y

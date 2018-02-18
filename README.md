@@ -73,6 +73,12 @@ works nicely for Acta Informatica.
 | `startpage` | 1 | The pagenumber of the first page of the paper. |
 | `publication` | `UNKNOWN PUBLICATION` | Information on the publication. |
 
+The package also defines a command `\authorsetup{}` which allows to
+define key value options dynamically. Moreover, if a file
+`authorarchive.config` exists in the LaTeX search path, it will be
+loaded automatically. This allows for configuring defaults
+(e.g., the baseurl) easily.
+
 ## Embedding Bibliography Entries
 Mostly, it is hard for scientists to find the correct bibtex entry for a paper.
 One solution to this issue is to embed the respective `.bib`, `.enw`, `.ris`, or `.word.xml` file in the PDF directly.
