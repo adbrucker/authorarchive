@@ -102,6 +102,14 @@ The package [llncsconf](https://github.com/adbrucker/llncsconf) is a light-weigh
 It supports [LNCS](http://www.springer.com/de/it-informatik/lncs) only.
 In comparison to `authorarchive`, it provides support for the additional publication states "intended-to-submit" and "submitted", but no QR code and links to the author's archive URL.
 
+## Authors
+Main author: [Achim D. Brucker](http://www.brucker.ch/)
+
+### Contributors
+* Oliver Kopp
+
+
+
 ## License
 If not otherwise stated, all sub-projects are dual-licensed under a
 2-clause BSD-style license and/or the LPPL version 1 or any later 
