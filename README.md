@@ -114,7 +114,7 @@ code and links to the author's archive URL.
 Main author: [Achim D. Brucker](http://www.brucker.ch/)
 
 ### Contributors
-* Oliver Kopp
+* [Oliver Kopp](https://github.com/koppor/)
 
 
 
