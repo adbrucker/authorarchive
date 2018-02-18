@@ -80,12 +80,17 @@ loaded automatically. This allows for configuring defaults
 (e.g., the baseurl) easily.
 
 ## Embedding Bibliography Entries
-Mostly, it is hard for scientists to find the correct bibtex entry for a paper.
-One solution to this issue is to embed the respective `.bib`, `.enw`, `.ris`, or `.word.xml` file in the PDF directly.
-This work allows for that.
-In case any of these file exist in the current directory, it gets embedded in the PDF.
+Mostly, it is hard for scientists to find the correct bibtex entry for
+a paper.  One solution to this issue is to embed the respective `.bib`
+(BibTeX, for LaTeX users), `.enw` (Endnote), `.ris`, or `.word.xml`
+(Word 2007 or later) file in the PDF directly. In case any of these
+file exist in `bibtexdir`, it gets embedded in the PDF.
 
-You can generate these files by using [JabRef's export functionalities](https://help.jabref.org/en/#importexport).
+You can use the
+(bibutils)[https://sourceforge.net/p/bibutils/home/bib2xml/] for
+converting between these different formats for bibliographic
+references easily. 
+
 
 ## Alternative Packages
 The package [coverpage](https://ctan.org/pkg/coverpage) prepends a separate PDF page before the first page of the paper.
