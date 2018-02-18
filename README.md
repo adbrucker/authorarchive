@@ -88,8 +88,9 @@ a paper.  One solution to this issue is to embed the respective `.bib`
 file exist in `bibtexdir`, it gets embedded in the PDF.
 
 You can use the
-[bibutils](https://sourceforge.net/p/bibutils/home/bib2xml/) for
-converting between these different formats for bibliographic
+[bibutils](https://sourceforge.net/p/bibutils/home/bib2xml/) or
+[JabRef](https://www.jabref.org)
+for converting between these different formats for bibliographic
 references easily. 
 
 
