@@ -98,7 +98,7 @@ That page contains the bibliographic information as BibTeX entry.
 One is forced to have a `.bib` file ready and multiple institutions are not well supported.
 With `authorarchive`, the information is printed at the bottom of the first page of the paper and required links to the publisher are generated.
 
-The package [llncsconf](https://github.com/adbrucker/llncsconf) is a light-weight alternative to this package.
+The package [llncsconf](https://git.logicalhacking.com/adbrucker/llncsconf) is a light-weight alternative to this package.
 It supports [LNCS](http://www.springer.com/de/it-informatik/lncs) only.
 In comparison to `authorarchive`, it provides support for the additional publication states "intended-to-submit" and "submitted", but no QR code and links to the author's archive URL.
 
