@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- Updated LNCS output to the requirements of [Springer's Consent to Publish v3](http://resource-cms.springer.com/springer-cms/rest/v1/content/731196/data/v3).
+
 ## [1.0.0] - 2018-02-21
 ### Added
 - Initial version uploaded to CTAN.

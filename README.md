@@ -11,6 +11,7 @@
   * [Key/Value Options](#keyvalue-options)
 - [Embedding Bibliography Entries](#embedding-bibliography-entries)
 - [Development](#development)
+- [Notes on Self-Archiving](#notes-on-self-archiving)
 - [Alternative Packages](#alternative-packages)
 - [License](#license)
 
@@ -91,6 +92,36 @@ You can use the
 [bibutils](https://sourceforge.net/p/bibutils/home/bib2xml/) for
 converting between these different formats for bibliographic
 references easily. 
+
+## Notes on Self-Archiving
+
+Before using this package, please check with your signed copyright form,
+which rights you have. None of the authors might be hold liable for copyright
+violations by using this package.
+
+### LNCS
+Sprinter states in his [Springer's Consent to Publish v3](http://resource-cms.springer.com/springer-cms/rest/v1/content/731196/data/v3):
+
+> Author may only post his/her own version, provided acknowledgment is given to the original source of publication and a link is inserted to the published article on Springer’s website.
+> The link must be provided by inserting the DOI number of the article in the following sentence:
+> "The final publication is available at Springer via `http://dx.doi.org/[insert DOI]`".
+The DOI (Digital Object Identifier) can be found at the bottom of the first page of the published paper.
+
+This package uses `https://doi.org` as `http://dx.doi.org` [is deprecated](https://www.doi.org/factsheets/DOIIdentifierSpecs.html).
+
+Thus, the proposed configuration for Springer is as follows:
+
+```latex
+\usepackage[LNCS,
+   key=brucker-authorarchive-2016,
+   year=2016,
+   publication={Anonymous et al. (eds). Proceedings of the International
+       Conference on LaTeX-Hacks, LNCS~42. Springer, 2016.}
+   startpage={42},
+   doi={10.1038/authorarchive},
+   nocopyright
+ ]{authorarchive}
+```
 
 
 ## Alternative Packages
