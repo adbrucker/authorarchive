@@ -201,7 +201,13 @@
 \AddToShipoutPicture*{%
   \setlength{\unitlength}{1mm}%
   \authorat{%
-    \ifAA@nourl\relax\else%
+    \ifAA@nourl%
+       \ifx\AA@doi\@empty%
+         \hspace{0.585cm}
+       \else%
+          \raisebox{.5cm}[.5cm]{\qrcode[hyperlink,height=1.17cm,padding]{https://doi.org/\AA@doi}}%
+        \fi%
+    \else%
       \raisebox{.5cm}[.5cm]{\qrcode[hyperlink,height=1.17cm,padding]{\AA@baseurl/\AA@key\AA@suffix}}%
     \fi%
     \authorcrfont\parbox[b]{\AA@width-1.4cm}{
