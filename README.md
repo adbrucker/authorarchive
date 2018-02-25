@@ -123,6 +123,22 @@ Thus, the proposed configuration for Springer is as follows:
  ]{authorarchive}
 ```
 
+## Other publishers
+One does not need to specify a certain publisher. The default setting just
+prints the note centered at the bottom of the first page.
+
+```latex
+\usepackage[
+   key=brucker-authorarchive-2017,
+   year=2017,
+   publication={Anonymous et al. (eds). Proceedings of the International
+       Conference on LaTeX-Hacks, CEUR-WS Vol~42, 2017.}
+   startpage={42},
+   doi={10.1039/authorarchive},
+   nocopyright
+ ]{authorarchive}
+```
+
 
 ## Alternative Packages
 The package [coverpage](https://ctan.org/pkg/coverpage) prepends a
