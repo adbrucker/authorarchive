@@ -103,7 +103,7 @@ bottom of the first page of the paper and required links to the
 publisher are generated.
 
 The package
-[llncsconf](https://git.logicalhacking.com/adbrucker/llncsconf) is a
+[llncsconf](https://ctan.org/pkg/llncsconf) is a
 light-weight alternative to this package.  It supports
 [LNCS](http://www.springer.com/de/it-informatik/lncs) only.  In
 comparison to `authorarchive`, it provides support for the additional
