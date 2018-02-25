@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Updated LNCS output to the requirements of [Springer's Consent to Publish v3](http://resource-cms.springer.com/springer-cms/rest/v1/content/731196/data/v3).
+- If `nourl` is active, the DOI is used as link for the QR code.
+- Text is centered if no QR code (`nourl` + no DOI) is generated.
 
 ## [1.0.0] - 2018-02-21
 ### Added
