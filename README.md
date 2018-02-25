@@ -39,10 +39,10 @@ A simple use for LNCS-formatted papers is as follows:
 
 The following layout-styles are pre-defined:
 * `ACM` for the two-column layout used by many ACM conferences
+* `ENTCS` for the Elsevier ENTCS layout
 * `IEEE` for the two-column layout used by many IEEE conferences 
 * `LNCS` for the LNCS layout (as used by Springer)
 * `LNI` for the Lecture Notes in Informatics, published by the GI
-* `ENTCS` for the Elsevier ENTCS layout
 
 By re-defining the font command (`authorcrfont{}`) and the command that is
 used for positioning the copyright text (`\authorat{}`), the package can 
