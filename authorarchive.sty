@@ -80,8 +80,10 @@
 \newlength\AA@y
 \newlength\AA@width
 
+\setlength\AA@x{1in+\hoffset+\oddsidemargin}
+
 \newcommand{\authorcrfont}{\footnotesize}
-\newcommand{\authorat}[1]{\put(100,100){#1}}
+\newcommand{\authorat}[1]{\AtPageUpperLeft{\put(\LenToUnit{\AA@x},\LenToUnit{-\paperheight}){#1}}}
 \newcommand{\authorwidth}[1]{\setlength{\AA@width}{#1}}
 \setlength{\AA@width}{\textwidth}
 
@@ -93,7 +95,6 @@
   \global\copyrightetc={}
   \renewcommand{\conferenceinfo}[2]{}
   \renewcommand{\authorcrfont}{\crnotice}
-  \setlength\AA@x{1in+\hoffset+\oddsidemargin}
   \setlength\AA@y{-\textheight+\topmargin+\headheight} % -\voffset-\topmargin-\headheight-\footskip}
   \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},\LenToUnit{\AA@y}){#1}}
   \setlength{\AA@width}{\columnwidth}
@@ -101,7 +102,6 @@
 %%%% LNCS
 \ifAA@LNCS%
   \setkeys{AA}{publisher=Springer-Verlag}
-  \setlength\AA@x{1in+\hoffset+\oddsidemargin}
   \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},27){#1}}
   \renewcommand{\authorcrfont}{\scriptsize}
   \pdfpagesattr{/CropBox [92 65 523 731]}% LNCS page: 152x235 mm
@@ -112,7 +112,6 @@
 %%%% LNI
 \ifAA@LNI%
   \setkeys{AA}{publisher=GI}
-  \setlength\AA@x{1in+\hoffset+\oddsidemargin}
   \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},35){#1}}
   \renewcommand{\authorcrfont}{\scriptsize}
   \pdfpagesattr{/CropBox [70 65 526.378 748.15]} % TODO
@@ -124,7 +123,6 @@
 \ifAA@ENTCS%
   \addtolength{\voffset}{1cm}
   \setkeys{AA}{publisher=Elsevier Science B.~V.}
-  \setlength\AA@x{1in+\hoffset+\oddsidemargin}
   \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},-250){#1}}
   \renewcommand{\authorcrfont}{\scriptsize}
   \def\@oddfoot{}
@@ -144,7 +142,6 @@
 %%%% IEEE
 \ifAA@IEEE%
   \setkeys{AA}{publisher=IEEE Computer Society}
-  \setlength\AA@x{1in+\hoffset+\oddsidemargin}
   \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},12){#1}}
   \renewcommand{\authorcrfont}{\scriptsize}
   \setlength{\AA@width}{\textwidth}
