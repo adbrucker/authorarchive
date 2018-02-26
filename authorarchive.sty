@@ -14,6 +14,8 @@
   [2018/02/25 Unreleased v1.0.0+%
   Self-archiving information for scientific publications.]
 %
+\PassOptionsToPackage{hyphens}{url}
+%
 \RequirePackage{ifthen}
 \RequirePackage[inline]{enumitem}
 \RequirePackage{graphicx}
@@ -26,13 +28,16 @@
 \RequirePackage{qrcode}
 \RequirePackage{dtk-logos}
 %
+%Better url breaking
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+%
 % Option declarations
 % -------------------
 \SetupKeyvalOptions{
   family=AA,
   prefix=AA@
 }
-
+%
 \DeclareStringOption[.]{bibtexdir}
 \DeclareStringOption[https://duckduckgo.com/?q=]{baseurl}
 \DeclareStringOption[.pdf]{suffix}
