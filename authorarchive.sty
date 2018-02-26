@@ -91,13 +91,8 @@
 
 \ifAA@ACM%
   \setkeys{AA}{publisher=ACM}
-  \global\boilerplate={}
-  \global\copyrightetc={}
-  \renewcommand{\conferenceinfo}[2]{}
-  \renewcommand{\authorcrfont}{\crnotice}
-  \setlength\AA@y{-\textheight+\topmargin+\headheight} % -\voffset-\topmargin-\headheight-\footskip}
-  \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},\LenToUnit{\AA@y}){#1}}
-  \setlength{\AA@width}{\columnwidth}
+  \renewcommand{\authorat}[1]{\AtPageUpperLeft{\put(\LenToUnit{\AA@x},\LenToUnit{-\paperheight}){#1}}}
+  \setlength{\AA@width}{\textwidth}
 \fi
 %%%% LNCS
 \ifAA@LNCS%
