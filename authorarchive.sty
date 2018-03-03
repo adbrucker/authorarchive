@@ -51,6 +51,7 @@
 \DeclareStringOption[UNKNOWN PUBLICATION]{publication}[]
 
 \DeclareBoolOption{ACM}
+\DeclareBoolOption{acmart}
 \DeclareBoolOption{ENTCS}
 \DeclareBoolOption{IEEE}
 \DeclareBoolOption{LNCS}
@@ -99,11 +100,28 @@
 
 \setcounter{page}{\AA@startpage}
 
+
+
+%%%% sig-alternate.cls
 \ifAA@ACM%
+  \setkeys{AA}{publisher=ACM}
+  \global\boilerplate={}
+  \global\copyrightetc={}
+  \renewcommand{\conferenceinfo}[2]{}
+  \renewcommand{\authorcrfont}{\scriptsize}
+  \setlength\AA@x{1in+\hoffset+\oddsidemargin}
+  \setlength\AA@y{-\textheight+\topmargin+\headheight} % -\voffset-\topmargin-\headheight-\footskip}
+  \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},\LenToUnit{\AA@y}){#1}}
+  \setlength{\AA@width}{\columnwidth}
+\fi
+%
+%%%% acmart.cls
+\ifAA@acmart%
   \setkeys{AA}{publisher=ACM}
   \renewcommand{\authorat}[1]{\AtPageUpperLeft{\put(\LenToUnit{\AA@x},\LenToUnit{-\paperheight}){#1}}}
   \setlength{\AA@width}{\textwidth}
 \fi
+%
 %%%% LNCS
 \ifAA@LNCS%
   \setkeys{AA}{publisher=Springer-Verlag}
