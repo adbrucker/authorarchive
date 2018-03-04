@@ -91,6 +91,19 @@
 \newlength\AA@y
 \newlength\AA@width
 
+\def\AA@bibBibTeX{\AA@bibtexdir/\AA@key.bib}
+\def\AA@bibWord{\AA@bibtexdir/\AA@key.word.xml}
+\def\AA@bibEndnote{\AA@bibtexdir/\AA@key.enw}
+\def\AA@bibRIS{\AA@bibtexdir/\AA@key.ris}
+\newboolean{AA@bibExists}
+\setboolean{AA@bibExists}{false}
+\IfFileExists{\AA@bibBibTeX}{\setboolean{AA@bibExists}{true}}{}
+\IfFileExists{\AA@bibWord}{\setboolean{AA@bibExists}{true}}{}
+\IfFileExists{\AA@bibEndnote}{\setboolean{AA@bibExists}{true}}{}
+\IfFileExists{\AA@bibRIS}{\setboolean{AA@bibExists}{true}}{}
+
+
+
 \setlength\AA@x{1in+\hoffset+\oddsidemargin}
 
 \newcommand{\authorcrfont}{\footnotesize}
@@ -248,62 +261,68 @@
         \fi
       \fi
       \ifAA@nobib\relax\else%
-        \hfill
-        % We need "doubleprint", because the text of \textattachfile is not printed when printing a PDF
-        % We use the idea from https://tex.stackexchange.com/a/19045/9075, accepting that
-        % the pointers to the files are renderedin semi-bold way
-        \newlength{\Urlname}
-        \newcommand{\doubleprint}[1]{\setlength{\Urlname}{\widthof{#1}}\hspace{-\Urlname}#1}
-        \begin{itemize*}[label={}, itemjoin={,}]
-          \IfFileExists{\AA@bibtexdir/\AA@key.bib}{%
-            \item \textattachfile[%
+        \ifthenelse{\boolean{AA@bibExists}}{%
+          \hfill
+          % We need "doubleprint", because the text of \textattachfile
+          % is not printed when printing a PDF
+          % We use the idea from
+          % https://tex.stackexchange.com/a/19045/9075, accepting that
+          % the pointers to the files are renderedin semi-bold way
+          \newlength{\Urlname}
+          \newcommand{\doubleprint}[1]{\setlength{\Urlname}{\widthof{#1}}\hspace{-\Urlname}#1}
+          \begin{itemize*}[label={}, itemjoin={,}]
+            \IfFileExists{\AA@bibBibTeX}{%
+              \item \textattachfile[%
                 print=true,%
                 color=0 0 0,%
                 icon=Paperclip,%
                 description={BibTeX entry of this paper},%
                 mimetype=application/x-bibtex%
-              ]{\AA@bibtexdir/\AA@key.bib}{\BibTeX}%
+              ]{\AA@bibBibTeX}{\BibTeX}%
               \doubleprint{\BibTeX}
-          }{
-            \typeout{No file \AA@bibtexdir/\AA@key.bib found. Not embedded reference in BibTeX format.}
-          }
-          \IfFileExists{\AA@bibtexdir/\AA@key.word.xml}{%
-            \item \textattachfile[%
+            }{
+              \typeout{No file \AA@bibBibTeX found. Not embedded reference in BibTeX format.}
+            }
+            \IfFileExists{\AA@bibWord}{%
+              \item \textattachfile[%
                 print=true,%
                 color=0 0 0,%
                 icon=Paperclip,%
                 description={XML entry of this paper (e.g., for Word 2007 and later)},%
                 mimetype=application/xml%
-              ]{\AA@bibtexdir/\AA@key.word.xml}{Word}%
-              \doubleprint{Word}
-          }{
-            \typeout{No file \AA@bibtexdir/\AA@key.word.xml found. Not embedded reference for Word 2007 and later.}
-          }
-          \IfFileExists{\AA@bibtexdir/\AA@key.enw}{%
-            \item \textattachfile[%
+              ]{\AA@bibWord}{Word}%
+                \doubleprint{Word}
+            }{
+              \typeout{No file \AA@bibWord found. Not embedded reference for Word 2007 and later.}
+            }
+            \IfFileExists{\AA@bibEndnote}{%
+              \item \textattachfile[%
                 print=true,%
                 color=0 0 0,%
                 icon=Paperclip,%
                 description={Endnote entry of this paper},%
                 mimetype=application/x-endnote-refer%
-              ]{\AA@bibtexdir/\AA@key.enw}{EndNote}%
+              ]{\AA@bibEndnote}{EndNote}%
               \doubleprint{EndNote}
-          }{
-            \typeout{No file \AA@bibtexdir/\AA@key.enw found. Not embedded reference in Endnote format.}
-          }
-          \IfFileExists{\AA@bibtexdir/\AA@key.ris}{%
-            \item \textattachfile[%
+            }{
+              \typeout{No file \AA@bibEndnote found. Not embedded reference in Endnote format.}
+            }
+            \IfFileExists{\AA@bibRIS}{%
+              \item \textattachfile[%
                 print=true,%
                 color=0 0 0,%
                 icon=Paperclip,%
                 description={RIS entry of this paper},%
                 mimetype=application/x-research-info-systems%
-              ]{\AA@bibtexdir/\AA@key.ris}{RIS}%
+              ]{\AA@bibRIS}{RIS}%
               \doubleprint{RIS}
-          }{
-            \typeout{No file \AA@bibtexdir/\AA@key.ris found. Not embedded reference in RIS format.}
-          }
-        \end{itemize*}
+            }{
+              \typeout{No file \AA@bibRIS found. Not embedded reference in RIS format.}
+            }
+          \end{itemize*}%
+        }{%
+          \PackageError{authorarchive}{No bibliographic files found. Specify option 'nobib' if this is intended.}
+        }
       \fi
     }
   }
