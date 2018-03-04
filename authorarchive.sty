@@ -7,19 +7,28 @@
 %%   version 1 of the License, or any later version.
 %%   OR
 %%   The 2-clause BSD-style license.
+%%
+%%   SPDX-License-Identifier: LPPL-1.0+ OR BSD-2-Clause
 \NeedsTeXFormat{LaTeX2e}\relax
 \ProvidesPackage{authorarchive}
   [0000/00/00 Unreleased v1.0.0+%
   Self-archiving information for scientific publications.]
 %
+\PassOptionsToPackage{hyphens}{url}
+%
 \RequirePackage{ifthen}
+\RequirePackage[inline]{enumitem}
 \RequirePackage{graphicx}
-\RequirePackage{hyperref}
 \RequirePackage{eso-pic}
-\RequirePackage{embedfile}
+\RequirePackage{attachfile}
 \RequirePackage{kvoptions}
+\RequirePackage{hyperref}
 \RequirePackage{calc}
 \RequirePackage{qrcode}
+\RequirePackage{dtk-logos}
+%
+%Better url breaking
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
 %
 % Option declarations
 % -------------------
@@ -27,7 +36,7 @@
   family=AA,
   prefix=AA@
 }
-
+%
 \DeclareStringOption[.]{bibtexdir}
 \DeclareStringOption[https://duckduckgo.com/?q=]{baseurl}
 \DeclareStringOption[.pdf]{suffix}
@@ -41,13 +50,14 @@
 \DeclareStringOption[UNKNOWN PUBLICATION]{publication}[]
 
 \DeclareBoolOption{ACM}
+\DeclareBoolOption{acmart}
+\DeclareBoolOption{ENTCS}
 \DeclareBoolOption{IEEE}
 \DeclareBoolOption{LNCS}
 \DeclareBoolOption{LNI}
 \DeclareBoolOption{nocopyright}
 \DeclareBoolOption{nourl}
 \DeclareBoolOption{nobib}
-\DeclareBoolOption{ENTCS}
 %\ProcessOptions\relax
 
 
@@ -80,28 +90,53 @@
 \newlength\AA@y
 \newlength\AA@width
 
+\def\AA@bibBibTeX{\AA@bibtexdir/\AA@key.bib}
+\def\AA@bibWord{\AA@bibtexdir/\AA@key.word.xml}
+\def\AA@bibEndnote{\AA@bibtexdir/\AA@key.enw}
+\def\AA@bibRIS{\AA@bibtexdir/\AA@key.ris}
+\newboolean{AA@bibExists}
+\setboolean{AA@bibExists}{false}
+\IfFileExists{\AA@bibBibTeX}{\setboolean{AA@bibExists}{true}}{}
+\IfFileExists{\AA@bibWord}{\setboolean{AA@bibExists}{true}}{}
+\IfFileExists{\AA@bibEndnote}{\setboolean{AA@bibExists}{true}}{}
+\IfFileExists{\AA@bibRIS}{\setboolean{AA@bibExists}{true}}{}
+
+
+
+\setlength\AA@x{1in+\hoffset+\oddsidemargin}
+
 \newcommand{\authorcrfont}{\footnotesize}
-\newcommand{\authorat}[1]{\put(100,100){#1}}
+\newcommand{\authorat}[1]{\AtPageUpperLeft{\put(\LenToUnit{\AA@x},\LenToUnit{-\paperheight}){#1}}}
 \newcommand{\authorwidth}[1]{\setlength{\AA@width}{#1}}
 \setlength{\AA@width}{\textwidth}
 
 \setcounter{page}{\AA@startpage}
 
+
+
+%%%% sig-alternate.cls
 \ifAA@ACM%
   \setkeys{AA}{publisher=ACM}
   \global\boilerplate={}
   \global\copyrightetc={}
   \renewcommand{\conferenceinfo}[2]{}
-  \renewcommand{\authorcrfont}{\crnotice}
+  \renewcommand{\authorcrfont}{\scriptsize}
   \setlength\AA@x{1in+\hoffset+\oddsidemargin}
   \setlength\AA@y{-\textheight+\topmargin+\headheight} % -\voffset-\topmargin-\headheight-\footskip}
   \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},\LenToUnit{\AA@y}){#1}}
   \setlength{\AA@width}{\columnwidth}
 \fi
+%
+%%%% acmart.cls
+\ifAA@acmart%
+  \setkeys{AA}{publisher=ACM}
+  \renewcommand{\authorat}[1]{\AtPageUpperLeft{\put(\LenToUnit{\AA@x},\LenToUnit{-\paperheight}){#1}}}
+  \setlength{\AA@width}{\textwidth}
+\fi
+%
 %%%% LNCS
 \ifAA@LNCS%
   \setkeys{AA}{publisher=Springer-Verlag}
-  \setlength\AA@x{1in+\hoffset+\oddsidemargin}
   \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},27){#1}}
   \renewcommand{\authorcrfont}{\scriptsize}
   \pdfpagesattr{/CropBox [92 65 523 731]}% LNCS page: 152x235 mm
@@ -112,7 +147,6 @@
 %%%% LNI
 \ifAA@LNI%
   \setkeys{AA}{publisher=GI}
-  \setlength\AA@x{1in+\hoffset+\oddsidemargin}
   \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},35){#1}}
   \renewcommand{\authorcrfont}{\scriptsize}
   \pdfpagesattr{/CropBox [70 65 526.378 748.15]} % TODO
@@ -124,7 +158,6 @@
 \ifAA@ENTCS%
   \addtolength{\voffset}{1cm}
   \setkeys{AA}{publisher=Elsevier Science B.~V.}
-  \setlength\AA@x{1in+\hoffset+\oddsidemargin}
   \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},-250){#1}}
   \renewcommand{\authorcrfont}{\scriptsize}
   \def\@oddfoot{}
@@ -144,7 +177,6 @@
 %%%% IEEE
 \ifAA@IEEE%
   \setkeys{AA}{publisher=IEEE Computer Society}
-  \setlength\AA@x{1in+\hoffset+\oddsidemargin}
   \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},12){#1}}
   \renewcommand{\authorcrfont}{\scriptsize}
   \setlength{\AA@width}{\textwidth}
@@ -160,53 +192,26 @@
   pdftitle      = {\@title},
 }
 
-\ifAA@nobib\relax\else%
-  \AtBeginDocument{%
-    \IfFileExists{\AA@bibtexdir/\AA@key.bib}{%
-      \embedfile[filespec=\AA@key.bib,%
-        desc={BibTeX entry of this paper.},%
-        stringmethod=escape,%
-        mimetype=plain/text,%
-      ]{\AA@bibtexdir/\AA@key.bib}}{
-      \typeout{No file \AA@bibtexdir/\AA@key.bib found. Not embedded reference in BibTeX format.}
-    }%
-    \IfFileExists{\AA@bibtexdir/\AA@key.enw}{%
-      \embedfile[filespec=\AA@key.enw,%
-        desc={Endnote entry of this paper.},%
-        stringmethod=escape,%
-        mimetype=plain/text,%
-      ]{\AA@bibtexdir/\AA@key.enw}}{
-      \typeout{No file \AA@bibtexdir/\AA@key.enw found. Not embedded reference in Endnote format.}
-    }%
-    \IfFileExists{\AA@bibtexdir/\AA@key.ris}{%
-      \embedfile[filespec=\AA@key.ris,%
-        desc={RIS entry of this paper.},%
-        stringmethod=escape,%
-        mimetype=plain/text,%
-      ]{\AA@bibtexdir/\AA@key.ris}}{
-      \typeout{No file \AA@bibtexdir/\AA@key.ris found. Not embedded reference in RIS format.}
-    }%
-    \IfFileExists{\AA@bibtexdir/\AA@key.word.xml}{%
-      \embedfile[filespec=\AA@key.word.xml,%
-        desc={XML entry of this paper (e.g., for Word 2007 and later).},%
-        stringmethod=escape,%
-        mimetype=plain/text,%
-      ]{\AA@bibtexdir/\AA@key.word.xml}}{
-      \typeout{No file \AA@bibtexdir/\AA@key.word.xml found. Not embedded reference for Word 2007 and later.}
-    }%
-  }%
-\fi
 \AtEndDocument{\label{LastPage}}
 
 \AddToShipoutPicture*{%
   \setlength{\unitlength}{1mm}%
   \authorat{%
-    \ifAA@nourl\relax\else%
-      \raisebox{.5cm}[.5cm]{\qrcode[hyperlink,height=1.17cm,padding]{\AA@baseurl/\AA@key\AA@suffix}}%
-    \fi%
+    \bgroup%
+      \normallineskiplimit=0pt%
+      \ifAA@nourl%
+         \ifx\AA@doi\@empty%
+           \hspace{0.585cm}
+         \else%
+            \raisebox{.5cm}[.5cm]{\qrcode[hyperlink,height=1.17cm,padding]{https://doi.org/\AA@doi}}%
+          \fi%
+      \else%
+        \raisebox{.5cm}[.5cm]{\qrcode[hyperlink,height=1.17cm,padding]{\AA@baseurl/\AA@key\AA@suffix}}%
+      \fi%
+    \egroup%
     \authorcrfont\parbox[b]{\AA@width-1.4cm}{
       \ifAA@LNCS%
-        \AA@publication, pp. \thepage--\pageref{LastPage}, \AA@year.\\%
+        \AA@publication, pp. \thepage--\pageref{LastPage}, \AA@year.
         \ifAA@nocopyright\relax\else
           \textcopyright~\AA@year~\AA@publisher.
         \fi
@@ -222,10 +227,9 @@
         \ifx\AA@doi\@empty%
           \relax
         \else
-          The definitive
-          version was published with doi:
+          The final publication is available at Springer via
           \ifx\AA@doiText\@empty%
-            \href{https://doi.org/\AA@doi}{\AA@doi}.
+            \url{https://doi.org/\AA@doi}.
           \else
             \href{https://doi.org/\AA@doi}{\AA@doiText}.
           \fi
@@ -257,6 +261,70 @@
             , doi: \href{https://doi.org/\AA@doi}{\AA@doiText}.%
           \fi
         \fi
+      \fi
+      \ifAA@nobib\relax\else%
+        \ifthenelse{\boolean{AA@bibExists}}{%
+          \hfill
+          % We need "doubleprint", because the text of \textattachfile
+          % is not printed when printing a PDF
+          % We use the idea from
+          % https://tex.stackexchange.com/a/19045/9075, accepting that
+          % the pointers to the files are renderedin semi-bold way
+          \newlength{\Urlname}
+          \newcommand{\doubleprint}[1]{\setlength{\Urlname}{\widthof{#1}}\hspace{-\Urlname}#1}
+          \begin{itemize*}[label={}, itemjoin={,}]
+            \IfFileExists{\AA@bibBibTeX}{%
+              \item \textattachfile[%
+                print=true,%
+                color=0 0 0,%
+                icon=Paperclip,%
+                description={BibTeX entry of this paper},%
+                mimetype=application/x-bibtex%
+              ]{\AA@bibBibTeX}{\BibTeX}%
+              \doubleprint{\BibTeX}
+            }{
+              \typeout{No file \AA@bibBibTeX found. Not embedded reference in BibTeX format.}
+            }
+            \IfFileExists{\AA@bibWord}{%
+              \item \textattachfile[%
+                print=true,%
+                color=0 0 0,%
+                icon=Paperclip,%
+                description={XML entry of this paper (e.g., for Word 2007 and later)},%
+                mimetype=application/xml%
+              ]{\AA@bibWord}{Word}%
+                \doubleprint{Word}%
+            }{
+              \typeout{No file \AA@bibWord found. Not embedded reference for Word 2007 and later.}
+            }
+            \IfFileExists{\AA@bibEndnote}{%
+              \item \textattachfile[%
+                print=true,%
+                color=0 0 0,%
+                icon=Paperclip,%
+                description={Endnote entry of this paper},%
+                mimetype=application/x-endnote-refer%
+              ]{\AA@bibEndnote}{EndNote}%
+              \doubleprint{EndNote}%
+            }{
+              \typeout{No file \AA@bibEndnote found. Not embedded reference in Endnote format.}
+            }
+            \IfFileExists{\AA@bibRIS}{%
+              \item \textattachfile[%
+                print=true,%
+                color=0 0 0,%
+                icon=Paperclip,%
+                description={RIS entry of this paper},%
+                mimetype=application/x-research-info-systems%
+              ]{\AA@bibRIS}{RIS}%
+              \doubleprint{RIS}%
+            }{
+              \typeout{No file \AA@bibRIS found. Not embedded reference in RIS format.}
+            }
+          \end{itemize*}\\
+        }{%
+          \PackageError{authorarchive}{No bibliographic files found. Specify option 'nobib' if this is intended.}
+        }
       \fi
     }
   }
