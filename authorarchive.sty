@@ -23,7 +23,6 @@
 \RequirePackage{attachfile}
 \RequirePackage{kvoptions}
 \RequirePackage{hyperref}
-\RequirePackage{hypgotoe}
 \RequirePackage{calc}
 \RequirePackage{qrcode}
 \RequirePackage{dtk-logos}
@@ -319,7 +318,7 @@
             }{
               \typeout{No file \AA@bibRIS found. Not embedded reference in RIS format.}
             }
-          \end{itemize*}%
+          \end{itemize*}\\
         }{%
           \PackageError{authorarchive}{No bibliographic files found. Specify option 'nobib' if this is intended.}
         }
