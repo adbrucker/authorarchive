@@ -20,7 +20,7 @@
 \RequirePackage[inline]{enumitem}
 \RequirePackage{graphicx}
 \RequirePackage{eso-pic}
-\RequirePackage{attachfile}
+\RequirePackage{intopdf}
 \RequirePackage{kvoptions}
 \RequirePackage{hyperref}
 \RequirePackage{calc}
@@ -259,59 +259,24 @@
       \ifAA@nobib\relax\else%
         \ifthenelse{\boolean{AA@bibExists}}{%
           \hfill
-          % We need "doubleprint", because the text of \textattachfile
-          % is not printed when printing a PDF
-          % We use the idea from
-          % https://tex.stackexchange.com/a/19045/9075, accepting that
-          % the pointers to the files are renderedin semi-bold way
-          \newlength{\Urlname}
-          \newcommand{\doubleprint}[1]{\setlength{\Urlname}{\widthof{#1}}\hspace{-\Urlname}#1}
           \begin{itemize*}[label={}, itemjoin={,}]
             \IfFileExists{\AA@bibBibTeX}{%
-              \item \textattachfile[%
-                print=true,%
-                color=0 0 0,%
-                icon=Paperclip,%
-                description={BibTeX entry of this paper},%
-                mimetype=application/x-bibtex%
-              ]{\AA@bibBibTeX}{\BibTeX}%
-              \doubleprint{\BibTeX}
+              \item \attachandlink{\AA@bibBibTeX}[application/x-bibtex]{BibTeX entry of this paper}{\BibTeX}%
             }{
               \typeout{No file \AA@bibBibTeX found. Not embedded reference in BibTeX format.}
             }
             \IfFileExists{\AA@bibWord}{%
-              \item \textattachfile[%
-                print=true,%
-                color=0 0 0,%
-                icon=Paperclip,%
-                description={XML entry of this paper (e.g., for Word 2007 and later)},%
-                mimetype=application/xml%
-              ]{\AA@bibWord}{Word}%
-                \doubleprint{Word}%
+              \item \attachandlink{\AA@bibWord}[application/xml]{XML entry of this paper (e.g., for Word 2007 and later)}{Word}%
             }{
               \typeout{No file \AA@bibWord found. Not embedded reference for Word 2007 and later.}
             }
             \IfFileExists{\AA@bibEndnote}{%
-              \item \textattachfile[%
-                print=true,%
-                color=0 0 0,%
-                icon=Paperclip,%
-                description={Endnote entry of this paper},%
-                mimetype=application/x-endnote-refer%
-              ]{\AA@bibEndnote}{EndNote}%
-              \doubleprint{EndNote}%
+              \item \attachandlink{\AA@bibEndnote}[application/x-endnote-refer]{Endnote entry of this paper}{EndNote}%
             }{
               \typeout{No file \AA@bibEndnote found. Not embedded reference in Endnote format.}
             }
             \IfFileExists{\AA@bibRIS}{%
-              \item \textattachfile[%
-                print=true,%
-                color=0 0 0,%
-                icon=Paperclip,%
-                description={RIS entry of this paper},%
-                mimetype=application/x-research-info-systems%
-              ]{\AA@bibRIS}{RIS}%
-              \doubleprint{RIS}%
+              \item \attachandlink{\AA@bibRIS}[application/x-research-info-systems]{RIS entry of this paper}{RIS}%
             }{
               \typeout{No file \AA@bibRIS found. Not embedded reference in RIS format.}
             }
