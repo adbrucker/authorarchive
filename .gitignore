@@ -1,4 +1,12 @@
 # ---> TeX
+## class files for examples
+examples/acmart.cls
+examples/entcs.cls
+examples/IEEEtran.cls
+examples/llncs.cls
+examples/lni.cls
+examples/sig-alternate.cls
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
