@@ -94,7 +94,6 @@ converting between these different formats for bibliographic
 references easily. 
 
 ## Notes on Self-Archiving
-
 Before using this package, please check with your signed copyright form,
 which rights you have. None of the authors might be hold liable for copyright
 violations by using this package.
@@ -115,7 +114,7 @@ Thus, the proposed configuration for Springer is as follows:
 \usepackage[LNCS,
    key=brucker-authorarchive-2016,
    year=2016,
-   publication={Anonymous et al. (eds). Proceedings of the International
+   publication={Anonymous et al.\ (eds). Proceedings of the International
        Conference on LaTeX-Hacks, LNCS~42. Springer, 2016.}
    startpage={42},
    doi={10.1038/authorarchive},
@@ -131,7 +130,7 @@ prints the note centered at the bottom of the first page.
 \usepackage[
    key=brucker-authorarchive-2017,
    year=2017,
-   publication={Anonymous et al. (eds). Proceedings of the International
+   publication={Anonymous et al.\ (eds). Proceedings of the International
        Conference on LaTeX-Hacks, CEUR-WS Vol~42, 2017.}
    startpage={42},
    doi={10.1039/authorarchive},
@@ -169,3 +168,5 @@ Main author: [Achim D. Brucker](http://www.brucker.ch/)
 If not otherwise stated, all sub-projects are dual-licensed under a
 2-clause BSD-style license and/or the LPPL version 1.3c or (at your 
 opinion) any later version.
+
+SPDX-License-Identifier: LPPL-1.3c+ OR BSD-2-Clause
