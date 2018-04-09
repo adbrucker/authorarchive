@@ -137,8 +137,8 @@ Thus, the proposed configuration for Springer is as follows:
 
 ## Other publishers
 
-One does not need to specify a certain publisher. The default setting just
-prints the note centered at the bottom of the first page.
+In general, one does not need to specify a certain publisher (or LaTeX document class). 
+The default setting just prints the note centered at the bottom of the first page.
 
 ```latex
 \usepackage[
@@ -152,6 +152,8 @@ prints the note centered at the bottom of the first page.
  ]{authorarchive}
 ```
 
+Still, for some used document classes (e.g., `acmart`) there are specific
+package options available hat produce an alternative layout.  
 
 ## Alternative Packages
 
