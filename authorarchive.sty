@@ -137,9 +137,14 @@
 %%%% LNCS
 \ifAA@LNCS%
   \setkeys{AA}{publisher=Springer-Verlag}
-  \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},23){#1}}
   \renewcommand{\authorcrfont}{\scriptsize}
-  \pdfpagesattr{/CropBox [92 65 523 731]}% LNCS page: 152x235 mm
+  \@ifclasswith{llncs}{a4paper}{%
+    \pdfpagesattr{/CropBox [92 114 523 780]}%
+    \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},40){#1}}%
+  }{%
+    \pdfpagesattr{/CropBox [92 65 523 731]}% LNCS page: 152x235 mm
+    \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},23){#1}}
+  }
   \setlength{\AA@width}{\textwidth}
   \setcounter{tocdepth}{2}
 \fi
