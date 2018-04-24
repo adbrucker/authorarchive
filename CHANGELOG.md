@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Text is centered if no QR code (`nourl` + no DOI) is generated.
 - File embedding is implemented using the [intopdf](https://www.ctan.org/pkg/intopdf) package. Links to the embedded files are shown in the generated PDF.
 - ACM format adapted to [acmart](https://github.com/borisveytsman/acmart) v1.50.
+- Use [lastpage](https://ctan.org/pkg/lastpage) package instead of custom label.
 
 ## [1.0.0] - 2018-02-21
 ### Added
