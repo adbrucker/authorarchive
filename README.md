@@ -19,9 +19,9 @@
 
 ## Installation 
 
-Copy `authorarchive.sty` in a directory that is searched by LaTeX
-(e.g,. either your `texmf` tree or the local directory with your main
-LaTeX file.
+Copy `authorarchive.sty` and the directory `icons` in a directory that
+is searched by LaTeX (e.g,. either your `texmf` tree or the local
+directory with your main LaTeX file.
 
 ## Usage
 
@@ -57,11 +57,12 @@ works nicely for Acta Informatica.
 
 ### Boolean Switches
 
-| Switch | Meaning |
-| -- | -- |
-| `nocopyright` | If present, no publisher's copyright notice is printed. Usual case for LNCS. |
-| `nourl` | If present, no link to the publication is inserted. |
-| `nobib` | If present, no embedding of bibliographic entries is made. |
+| Switch        | Meaning                                                                                                           |
+| --            | --                                                                                                                |
+| `nocopyright` | If present, no publisher's copyright notice is printed. Usual case for LNCS.                                      |
+| `nourl`       | If present, no link to the publication is inserted.                                                               |
+| `nobib`       | If present, no embedding of bibliographic entries is made.                                                        |
+| `orcidicon`   | For layouts displaying the author's ORCID identifiers as text, replace the ORCID identifier by the ORICD iD icon and a hyperlink (currently only supported for LNCS). |
 
 ### Key/Value Options
 

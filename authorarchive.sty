@@ -58,6 +58,7 @@
 \DeclareBoolOption{nocopyright}
 \DeclareBoolOption{nourl}
 \DeclareBoolOption{nobib}
+\DeclareBoolOption{orcidicon}
 %\ProcessOptions\relax
 
 
@@ -136,6 +137,11 @@
 %
 %%%% LNCS
 \ifAA@LNCS%
+  \ifAA@orcidicon%
+    \renewcommand{\orcidID}[1]{\href{https://orcid.org/#1}{%
+      \textsuperscript{\,\includegraphics[height=2\fontcharht\font`A]{vector_iD_icon}}}}
+  \else\relax\fi%
+%  
   \setkeys{AA}{publisher=Springer-Verlag}
   \renewcommand{\authorcrfont}{\scriptsize}
   \@ifclasswith{llncs}{a4paper}{%
