@@ -192,8 +192,12 @@
   pdftitle      = {\@title},
 }
 
-\RequirePackage{lastpage}
-
+\@ifpackageloaded{totpages}{%
+  \def\aa@lastpage{TotPages}
+}{%
+  \RequirePackage{lastpage}
+  \def\aa@lastpage{LastPage}
+}
 \newsavebox{\AA@authoratBox}
 
 \AddToShipoutPicture*{%
@@ -215,7 +219,7 @@
     }%
     \parbox{\AA@width-1.4cm}{\authorcrfont%
       \ifAA@LNCS%
-        \AA@publication, pp. \thepage--\pageref{LastPage}, \AA@year.
+        \AA@publication, pp. \thepage--\pageref{\aa@lastpage}, \AA@year.
         \ifAA@nocopyright\relax\else
           \textcopyright~\AA@year~\AA@publisher.
         \fi
@@ -251,7 +255,7 @@
           by permission of \AA@publisher{} %
         \fi
         for your personal use. Not for redistribution. The definitive
-        version was published in \emph{\AA@publication}, pp.~\thepage--\pageref{LastPage}, \AA@year%
+        version was published in \emph{\AA@publication}, pp.~\thepage--\pageref{\aa@lastpage}, \AA@year%
         \ifx\AA@doi\@empty%
           \ifx\AA@publisherurl\@empty%
             .%
