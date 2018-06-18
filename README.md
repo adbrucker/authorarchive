@@ -102,7 +102,11 @@ references easily.
 ## Notes on Self-Archiving
 
 Before using this package, please check with your signed copyright form,
-which rights you have. None of the authors might be hold liable for copyright
+which rights you have. Especially whether you may self-archive the preprint
+or the postprint. For more information on that, read on at 
+<https://blogs.scientificamerican.com/information-culture/understanding-your-rights-pre-prints-post-prints-and-publisher-versions/>.
+
+None of the authors might be hold liable for copyright
 violations by using this package.
 
 ### LNCS
@@ -181,8 +185,6 @@ Main author: [Achim D. Brucker](http://www.brucker.ch/)
 ### Contributors
 
 * [Oliver Kopp](https://github.com/koppor/)
-
-
 
 ## License
 
