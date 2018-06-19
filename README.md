@@ -18,11 +18,13 @@
 <!-- tocstop -->
 
 ## Installation 
-Copy `authorarchive.sty` in a directory that is searched by LaTeX
-(e.g,. either your `texmf` tree or the local directory with your main
-LaTeX file.
+
+Copy `authorarchive.sty` and the directory `icons` in a directory that
+is searched by LaTeX (e.g,. either your `texmf` tree or the local
+directory with your main LaTeX file.
 
 ## Usage
+
 A simple use for LNCS-formatted papers is as follows:
 ```tex
 \usepackage[LNCS,
@@ -54,13 +56,16 @@ be adapted easily to other layouts. For example,
 works nicely for Acta Informatica.
 
 ### Boolean Switches
-| Switch | Meaning |
-| -- | -- |
-| `nocopyright` | If present, no publisher's copyright notice is printed. Usual case for LNCS. |
-| `nourl` | If present, no link to the publication is inserted. |
-| `nobib` | If present, no embedding of bibliographic entries is made. |
+
+| Switch        | Meaning                                                                                                           |
+| --            | --                                                                                                                |
+| `nocopyright` | If present, no publisher's copyright notice is printed. Usual case for LNCS.                                      |
+| `nourl`       | If present, no link to the publication is inserted.                                                               |
+| `nobib`       | If present, no embedding of bibliographic entries is made.                                                        |
+| `orcidicon`   | For layouts displaying the author's ORCID identifiers as text, replace the ORCID identifier by the ORICD iD icon and a hyperlink (currently only supported for LNCS). |
 
 ### Key/Value Options
+
 | Option | Default | Meaning |
 | -- | -- | -- |
 | `bibtexdir`| `.` | The directory where the bibliography entries are listed. |
@@ -82,6 +87,7 @@ loaded automatically. This allows for configuring defaults (e.g., the
 baseurl) easily.
 
 ## Embedding Bibliography Entries
+
 Mostly, it is hard for scientists to find the correct bibtex entry for
 a paper.  One solution to this issue is to embed the respective `.bib`
 (BibTeX, for LaTeX users), `.enw` (Endnote), `.ris`, or `.word.xml`
@@ -96,18 +102,29 @@ references easily.
 ## Notes on Self-Archiving
 
 Before using this package, please check with your signed copyright form,
-which rights you have. None of the authors might be hold liable for copyright
+which rights you have. Especially whether you may self-archive the preprint
+or the postprint. For more information on that, read on at 
+<https://blogs.scientificamerican.com/information-culture/understanding-your-rights-pre-prints-post-prints-and-publisher-versions/>.
+
+None of the authors might be hold liable for copyright
 violations by using this package.
 
 ### LNCS
+
 Sprinter states in his [Springer's Consent to Publish v3](http://resource-cms.springer.com/springer-cms/rest/v1/content/731196/data/v3):
 
-> Author may only post his/her own version, provided acknowledgment is given to the original source of publication and a link is inserted to the published article on Springer’s website.
-> The link must be provided by inserting the DOI number of the article in the following sentence:
-> "The final publication is available at Springer via `http://dx.doi.org/[insert DOI]`".
-The DOI (Digital Object Identifier) can be found at the bottom of the first page of the published paper.
+> Author may only post his/her own version, provided acknowledgment is given 
+> to the original source of publication and a link is inserted to the published 
+> article on Springer’s website.
+> The link must be provided by inserting the DOI number of the article in the 
+> following sentence:
+> "The final publication is available at Springer via 
+> `http://dx.doi.org/[insert DOI]`".
+The DOI (Digital Object Identifier) can be found at the bottom of the first
+ page of the published paper.
 
-This package uses `https://doi.org` as `http://dx.doi.org` [is deprecated](https://www.doi.org/factsheets/DOIIdentifierSpecs.html).
+This package uses `https://doi.org` as `http://dx.doi.org` 
+[is deprecated](https://www.doi.org/factsheets/DOIIdentifierSpecs.html).
 
 Thus, the proposed configuration for Springer is as follows:
 
@@ -115,7 +132,7 @@ Thus, the proposed configuration for Springer is as follows:
 \usepackage[LNCS,
    key=brucker-authorarchive-2016,
    year=2016,
-   publication={Anonymous et al. (eds). Proceedings of the International
+   publication={Anonymous et al.\ (eds). Proceedings of the International
        Conference on LaTeX-Hacks, LNCS~42. Springer, 2016.}
    startpage={42},
    doi={10.1038/authorarchive},
@@ -124,14 +141,15 @@ Thus, the proposed configuration for Springer is as follows:
 ```
 
 ## Other publishers
-One does not need to specify a certain publisher. The default setting just
-prints the note centered at the bottom of the first page.
+
+In general, one does not need to specify a certain publisher (or LaTeX document class). 
+The default setting just prints the note centered at the bottom of the first page.
 
 ```latex
 \usepackage[
    key=brucker-authorarchive-2017,
    year=2017,
-   publication={Anonymous et al. (eds). Proceedings of the International
+   publication={Anonymous et al.\ (eds). Proceedings of the International
        Conference on LaTeX-Hacks, CEUR-WS Vol~42, 2017.}
    startpage={42},
    doi={10.1039/authorarchive},
@@ -139,8 +157,11 @@ prints the note centered at the bottom of the first page.
  ]{authorarchive}
 ```
 
+Still, for some used document classes (e.g., `acmart`) there are specific
+package options available hat produce an alternative layout.  
 
 ## Alternative Packages
+
 The package [coverpage](https://ctan.org/pkg/coverpage) prepends a
 separate PDF page before the first page of the paper.  That page
 contains the bibliographic information as BibTeX entry.  One is forced
@@ -158,14 +179,17 @@ publication states "intended-to-submit" and "submitted", but no QR
 code and links to the author's archive URL.
 
 ## Authors
+
 Main author: [Achim D. Brucker](http://www.brucker.ch/)
 
 ### Contributors
+
 * [Oliver Kopp](https://github.com/koppor/)
 
-
-
 ## License
+
 If not otherwise stated, all sub-projects are dual-licensed under a
-2-clause BSD-style license and/or the LPPL version 1 or any later 
-version.
+2-clause BSD-style license and/or the LPPL version 1.3c or (at your 
+opinion) any later version.
+
+SPDX-License-Identifier: LPPL-1.3c+ OR BSD-2-Clause

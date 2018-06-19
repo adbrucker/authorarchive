@@ -4,11 +4,11 @@
 %%   This program can be redistributed and/or modified under the terms
 %%   of the LaTeX Project Public License Distributed from CTAN
 %%   archives in directory macros/latex/base/lppl.txt; either
-%%   version 1 of the License, or any later version.
+%%   version 1.3c of the License, or (at your option) any later version.
 %%   OR
 %%   The 2-clause BSD-style license.
 %%
-%%   SPDX-License-Identifier: LPPL-1.0+ OR BSD-2-Clause
+%%   SPDX-License-Identifier: LPPL-1.3c+ OR BSD-2-Clause
 \NeedsTeXFormat{LaTeX2e}\relax
 \ProvidesPackage{authorarchive}
   [0000/00/00 Unreleased v1.0.0+%
@@ -20,7 +20,7 @@
 \RequirePackage[inline]{enumitem}
 \RequirePackage{graphicx}
 \RequirePackage{eso-pic}
-\RequirePackage{attachfile}
+\RequirePackage{intopdf}
 \RequirePackage{kvoptions}
 \RequirePackage{hyperref}
 \RequirePackage{calc}
@@ -58,6 +58,7 @@
 \DeclareBoolOption{nocopyright}
 \DeclareBoolOption{nourl}
 \DeclareBoolOption{nobib}
+\DeclareBoolOption{orcidicon}
 %\ProcessOptions\relax
 
 
@@ -136,10 +137,20 @@
 %
 %%%% LNCS
 \ifAA@LNCS%
+  \ifAA@orcidicon%
+    \renewcommand{\orcidID}[1]{\href{https://orcid.org/#1}{%
+      \textsuperscript{\,\includegraphics[height=2\fontcharht\font`A]{vector_iD_icon}}}}
+  \else\relax\fi%
+%  
   \setkeys{AA}{publisher=Springer-Verlag}
-  \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},23){#1}}
   \renewcommand{\authorcrfont}{\scriptsize}
-  \pdfpagesattr{/CropBox [92 65 523 731]}% LNCS page: 152x235 mm
+  \@ifclasswith{llncs}{a4paper}{%
+    \pdfpagesattr{/CropBox [92 114 523 780]}%
+    \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},40){#1}}%
+  }{%
+    \pdfpagesattr{/CropBox [92 65 523 731]}% LNCS page: 152x235 mm
+    \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},23){#1}}
+  }
   \setlength{\AA@width}{\textwidth}
   \setcounter{tocdepth}{2}
 \fi
@@ -181,9 +192,12 @@
   pdftitle      = {\@title},
 }
 
-\AtEndDocument{\label{LastPage}}
-
-
+\@ifpackageloaded{totpages}{%
+  \def\aa@lastpage{TotPages}
+}{%
+  \RequirePackage{lastpage}
+  \def\aa@lastpage{LastPage}
+}
 \newsavebox{\AA@authoratBox}
 
 \AddToShipoutPicture*{%
@@ -205,7 +219,7 @@
     }%
     \parbox{\AA@width-1.4cm}{\authorcrfont%
       \ifAA@LNCS%
-        \AA@publication, pp. \thepage--\pageref{LastPage}, \AA@year.
+        \AA@publication, pp. \thepage--\pageref{\aa@lastpage}, \AA@year.
         \ifAA@nocopyright\relax\else
           \textcopyright~\AA@year~\AA@publisher.
         \fi
@@ -241,7 +255,7 @@
           by permission of \AA@publisher{} %
         \fi
         for your personal use. Not for redistribution. The definitive
-        version was published in \emph{\AA@publication}, pp.~\thepage--\pageref{LastPage}, \AA@year%
+        version was published in \emph{\AA@publication}, pp.~\thepage--\pageref{\aa@lastpage}, \AA@year%
         \ifx\AA@doi\@empty%
           \ifx\AA@publisherurl\@empty%
             .%
@@ -259,59 +273,24 @@
       \ifAA@nobib\relax\else%
         \ifthenelse{\boolean{AA@bibExists}}{%
           \hfill
-          % We need "doubleprint", because the text of \textattachfile
-          % is not printed when printing a PDF
-          % We use the idea from
-          % https://tex.stackexchange.com/a/19045/9075, accepting that
-          % the pointers to the files are renderedin semi-bold way
-          \newlength{\Urlname}
-          \newcommand{\doubleprint}[1]{\setlength{\Urlname}{\widthof{#1}}\hspace{-\Urlname}#1}
           \begin{itemize*}[label={}, itemjoin={,}]
             \IfFileExists{\AA@bibBibTeX}{%
-              \item \textattachfile[%
-                print=true,%
-                color=0 0 0,%
-                icon=Paperclip,%
-                description={BibTeX entry of this paper},%
-                mimetype=application/x-bibtex%
-              ]{\AA@bibBibTeX}{\BibTeX}%
-              \doubleprint{\BibTeX}
+              \item \attachandlink{\AA@bibBibTeX}[application/x-bibtex]{BibTeX entry of this paper}{\BibTeX}%
             }{
               \typeout{No file \AA@bibBibTeX found. Not embedded reference in BibTeX format.}
             }
             \IfFileExists{\AA@bibWord}{%
-              \item \textattachfile[%
-                print=true,%
-                color=0 0 0,%
-                icon=Paperclip,%
-                description={XML entry of this paper (e.g., for Word 2007 and later)},%
-                mimetype=application/xml%
-              ]{\AA@bibWord}{Word}%
-                \doubleprint{Word}%
+              \item \attachandlink{\AA@bibWord}[application/xml]{XML entry of this paper (e.g., for Word 2007 and later)}{Word}%
             }{
               \typeout{No file \AA@bibWord found. Not embedded reference for Word 2007 and later.}
             }
             \IfFileExists{\AA@bibEndnote}{%
-              \item \textattachfile[%
-                print=true,%
-                color=0 0 0,%
-                icon=Paperclip,%
-                description={Endnote entry of this paper},%
-                mimetype=application/x-endnote-refer%
-              ]{\AA@bibEndnote}{EndNote}%
-              \doubleprint{EndNote}%
+              \item \attachandlink{\AA@bibEndnote}[application/x-endnote-refer]{Endnote entry of this paper}{EndNote}%
             }{
               \typeout{No file \AA@bibEndnote found. Not embedded reference in Endnote format.}
             }
             \IfFileExists{\AA@bibRIS}{%
-              \item \textattachfile[%
-                print=true,%
-                color=0 0 0,%
-                icon=Paperclip,%
-                description={RIS entry of this paper},%
-                mimetype=application/x-research-info-systems%
-              ]{\AA@bibRIS}{RIS}%
-              \doubleprint{RIS}%
+              \item \attachandlink{\AA@bibRIS}[application/x-research-info-systems]{RIS entry of this paper}{RIS}%
             }{
               \typeout{No file \AA@bibRIS found. Not embedded reference in RIS format.}
             }
