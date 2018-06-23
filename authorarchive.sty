@@ -46,7 +46,7 @@
 \DeclareStringOption[]{doi}[]
 \DeclareStringOption[]{doiText}[]
 \DeclareStringOption[]{publisherurl}[]
-\DeclareStringOption[1]{startpage}[]
+\DeclareStringOption[UNKNOWN START PAGE]{startpage}[]
 \DeclareStringOption[UNKNOWN PUBLICATION]{publication}[]
 
 \DeclareBoolOption{ACM}
@@ -111,7 +111,12 @@
 \newcommand{\authorwidth}[1]{\setlength{\AA@width}{#1}}
 \setlength{\AA@width}{\textwidth}
 
-\setcounter{page}{\AA@startpage}
+\def\AA@pageinfo{}
+\ifthenelse{\equal{\AA@startpage}{UNKNOWN START PAGE}}{%
+}{%
+  \setcounter{page}{\AA@startpage}%
+  \def\AA@pageinfo{pp. \thepage--\pageref{\aa@lastpage}, }
+}
 
 
 
@@ -219,8 +224,8 @@
     }%
     \parbox{\AA@width-1.4cm}{\authorcrfont%
       \ifAA@LNCS%
-        \AA@publication, pp. \thepage--\pageref{\aa@lastpage}, \AA@year.
-        \ifAA@nocopyright\relax\else
+        \AA@publication, \AA@pageinfo  \AA@year. %
+        \ifAA@nocopyright\else
           \textcopyright~\AA@year~\AA@publisher.
         \fi
         This is the author's
@@ -255,7 +260,7 @@
           by permission of \AA@publisher{} %
         \fi
         for your personal use. Not for redistribution. The definitive
-        version was published in \emph{\AA@publication}, pp.~\thepage--\pageref{\aa@lastpage}, \AA@year%
+        version was published in \emph{\AA@publication}, \AA@pageinfo \AA@year%
         \ifx\AA@doi\@empty%
           \ifx\AA@publisherurl\@empty%
             .%
