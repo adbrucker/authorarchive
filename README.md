@@ -5,15 +5,20 @@
 
 <!-- toc -->
 
-- [Installation](#installation)
-- [Usage](#usage)
-  * [Boolean Switches](#boolean-switches)
-  * [Key/Value Options](#keyvalue-options)
-- [Embedding Bibliography Entries](#embedding-bibliography-entries)
-- [Development](#development)
-- [Notes on Self-Archiving](#notes-on-self-archiving)
-- [Alternative Packages](#alternative-packages)
-- [License](#license)
+- [authorarchive](#authorarchive)
+    - [Installation](#installation)
+    - [Usage](#usage)
+        - [Boolean Switches](#boolean-switches)
+        - [Key/Value Options](#key-value-options)
+    - [Embedding Bibliography Entries](#embedding-bibliography-entries)
+    - [Notes on Self-Archiving](#notes-on-self-archiving)
+        - [LNCS](#lncs)
+    - [Other publishers](#other-publishers)
+    - [Alternative Packages](#alternative-packages)
+    - [Authors](#authors)
+        - [Contributors](#contributors)
+    - [License](#license)
+    - [Master Repository](#master-repository)
 
 <!-- tocstop -->
 
@@ -193,3 +198,9 @@ If not otherwise stated, all sub-projects are dual-licensed under a
 opinion) any later version.
 
 SPDX-License-Identifier: LPPL-1.3c+ OR BSD-2-Clause
+
+## Master Repository
+
+The master git repository for this project is hosted by the [Software
+Assurance & Security Research Team](https://logicalhacking.com) at
+https://git.logicalhacking.com/adbrucker/authorarchive
