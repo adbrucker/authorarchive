@@ -40,8 +40,8 @@
 \DeclareStringOption[.]{bibtexdir}
 \DeclareStringOption[https://duckduckgo.com/?q=]{baseurl}
 \DeclareStringOption[.pdf]{suffix}
-\DeclareStringOption[UNKOWN PUBLISHER]{publisher}[]
-\DeclareStringOption[UNKOWN YEAR]{year}[]
+\DeclareStringOption[UNKNOWN PUBLISHER]{publisher}[]
+\DeclareStringOption[UNKNOWN YEAR]{year}[]
 \DeclareStringOption[]{key}[]
 \DeclareStringOption[]{doi}[]
 \DeclareStringOption[]{doiText}[]
@@ -122,7 +122,9 @@
 
 %%%% sig-alternate.cls
 \ifAA@ACM%
-  \setkeys{AA}{publisher=ACM}
+  \ifthenelse{\equal{\AA@publisher}{UNKNOWN PUBLISHER}}{%
+    \setkeys{AA}{publisher=ACM}
+  }{}
   \global\boilerplate={}
   \global\copyrightetc={}
   \renewcommand{\conferenceinfo}[2]{}
@@ -135,7 +137,9 @@
 %
 %%%% acmart.cls
 \ifAA@acmart%
-  \setkeys{AA}{publisher=ACM}
+  \ifthenelse{\equal{\AA@publisher}{UNKNOWN PUBLISHER}}{%
+    \setkeys{AA}{publisher=ACM}
+  }{}
   \renewcommand{\authorat}[1]{\AtPageUpperLeft{\put(\LenToUnit{\AA@x},\LenToUnit{0.2cm-\paperheight}){#1}}}
   \setlength{\AA@width}{\textwidth}
 \fi
@@ -147,7 +151,9 @@
       \textsuperscript{\,\includegraphics[height=2\fontcharht\font`A]{vector_iD_icon}}}}
   \else\relax\fi%
 %  
-  \setkeys{AA}{publisher=Springer-Verlag}
+  \ifthenelse{\equal{\AA@publisher}{UNKNOWN PUBLISHER}}{%
+    \setkeys{AA}{publisher=Springer-Verlag}
+  }{}
   \renewcommand{\authorcrfont}{\scriptsize}
   \@ifclasswith{llncs}{a4paper}{%
     \pdfpagesattr{/CropBox [92 114 523 780]}%
@@ -162,7 +168,9 @@
 %
 %%%% LNI
 \ifAA@LNI%
-  \setkeys{AA}{publisher=GI}
+  \ifthenelse{\equal{\AA@publisher}{UNKNOWN PUBLISHER}}{%
+    \setkeys{AA}{publisher=GI}
+  }{}
   \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},35){#1}}
   \renewcommand{\authorcrfont}{\scriptsize}
   \pdfpagesattr{/CropBox [70 65 526.378 748.15]} % TODO
@@ -173,7 +181,9 @@
 %%%% ENTCS
 \ifAA@ENTCS%
   \addtolength{\voffset}{1cm}
-  \setkeys{AA}{publisher=Elsevier Science B.~V.}
+  \ifthenelse{\equal{\AA@publisher}{UNKNOWN PUBLISHER}}{%
+    \setkeys{AA}{publisher=Elsevier Science B.~V.}
+  }{}
   \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},\LenToUnit{-.5cm-\the\ht\AA@authoratBox}){#1}}
   \renewcommand{\authorcrfont}{\scriptsize}
   \setlength{\AA@width}{\textwidth}
@@ -181,7 +191,9 @@
 %
 %%%% IEEE
 \ifAA@IEEE%
-  \setkeys{AA}{publisher=IEEE Computer Society}
+  \ifthenelse{\equal{\AA@publisher}{UNKNOWN PUBLISHER}}{%
+    \setkeys{AA}{publisher=IEEE}
+  }{}
   \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},6){#1}}
   \renewcommand{\authorcrfont}{\scriptsize}
   \setlength{\AA@width}{\textwidth}
