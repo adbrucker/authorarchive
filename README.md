@@ -203,4 +203,4 @@ SPDX-License-Identifier: LPPL-1.3c+ OR BSD-2-Clause
 
 The master git repository for this project is hosted by the [Software
 Assurance & Security Research Team](https://logicalhacking.com) at
-https://git.logicalhacking.com/adbrucker/authorarchive
+<https://git.logicalhacking.com/adbrucker/authorarchive>.
