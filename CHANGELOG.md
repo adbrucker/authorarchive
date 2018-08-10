@@ -1,4 +1,5 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
@@ -7,10 +8,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
+
 - The links to the embedded files (references) are typeset at the bottom of the paper.
 - Support for `a4paper` for LNCS papers.
 
 ### Changed
+
 - Updated LNCS output to the requirements of [Springer's Consent to Publish v3](http://resource-cms.springer.com/springer-cms/rest/v1/content/731196/data/v3).
 - If `nourl` is active, the DOI is used as link for the QR code.
 - Text is centered if no QR code (`nourl` + no DOI) is generated.
@@ -21,6 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## 1.0.0 - 2018-02-21
 
 ### Added
+
 - Initial version uploaded to CTAN.
 
 [Unreleased]: https://github.com/adbrucker/authorarchive/compare/v1.0.0...HEAD

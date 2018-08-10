@@ -6,23 +6,23 @@
 <!-- toc -->
 
 - [authorarchive](#authorarchive)
-    - [Installation](#installation)
-    - [Usage](#usage)
-        - [Boolean Switches](#boolean-switches)
-        - [Key/Value Options](#key-value-options)
-    - [Embedding Bibliography Entries](#embedding-bibliography-entries)
-    - [Notes on Self-Archiving](#notes-on-self-archiving)
-        - [LNCS](#lncs)
-    - [Other publishers](#other-publishers)
-    - [Alternative Packages](#alternative-packages)
-    - [Authors](#authors)
-        - [Contributors](#contributors)
-    - [License](#license)
-    - [Master Repository](#master-repository)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Boolean Switches](#boolean-switches)
+    - [Key/Value Options](#key-value-options)
+  - [Embedding Bibliography Entries](#embedding-bibliography-entries)
+  - [Notes on Self-Archiving](#notes-on-self-archiving)
+    - [LNCS](#lncs)
+  - [Other publishers](#other-publishers)
+  - [Alternative Packages](#alternative-packages)
+  - [Authors](#authors)
+    - [Contributors](#contributors)
+  - [License](#license)
+  - [Master Repository](#master-repository)
 
 <!-- tocstop -->
 
-## Installation 
+## Installation
 
 Copy `authorarchive.sty` and the directory `icons` in a directory that
 is searched by LaTeX (e.g,. either your `texmf` tree or the local
@@ -31,6 +31,7 @@ directory with your main LaTeX file.
 ## Usage
 
 A simple use for LNCS-formatted papers is as follows:
+
 ```tex
 \usepackage[LNCS,
    key=brucker-authorarchive-2016,
@@ -45,19 +46,22 @@ A simple use for LNCS-formatted papers is as follows:
 ```
 
 The following layout-styles are pre-defined:
-* `ACM` for the two-column layout used by many ACM conferences
-* `ENTCS` for the Elsevier ENTCS layout
-* `IEEE` for the two-column layout used by many IEEE conferences 
-* `LNCS` for the LNCS layout (as used by Springer)
-* `LNI` for the Lecture Notes in Informatics, published by the GI
+
+- `ACM` for the two-column layout used by many ACM conferences
+- `ENTCS` for the Elsevier ENTCS layout
+- `IEEE` for the two-column layout used by many IEEE conferences
+- `LNCS` for the LNCS layout (as used by Springer)
+- `LNI` for the Lecture Notes in Informatics, published by the GI
 
 By re-defining the font command (`authorcrfont{}`) and the command that is
-used for positioning the copyright text (`\authorat{}`), the package can 
+used for positioning the copyright text (`\authorat{}`), the package can
 be adapted easily to other layouts. For example,
+
 ```tex
 \renewcommand{\authorcrfont}{\scriptsize}
 \renewcommand{\authorat}[1]{\put(25,56.5){#1}}
 ```
+
 works nicely for Acta Informatica.
 
 ### Boolean Switches
@@ -74,7 +78,7 @@ works nicely for Acta Informatica.
 | Option | Default | Meaning |
 | -- | -- | -- |
 | `bibtexdir`| `.` | The directory where the bibliography entries are listed. |
-| `baseurl` | https://git.logicalhacking.com/adbrucker/authorarchive/src/master | The URL used as prefix for building the links. |
+| `baseurl` | <https://git.logicalhacking.com/adbrucker/authorarchive/src/master> | The URL used as prefix for building the links. |
 | `suffix` | `.pdf` | The suffix to use at links. |
 | `publisher` | `UNKOWN PUBLISHER` | The name of the publisher. Default values are set by the series (`LNCS`, ...). |
 | `year` | `UNKOWN YEAR` | The year of the publication. |
@@ -102,13 +106,13 @@ file exist in `bibtexdir`, it gets embedded in the PDF.
 You can use the
 [bibutils](https://sourceforge.net/p/bibutils/home/Bibutils/) for
 converting between these different formats for bibliographic
-references easily. 
+references easily.
 
 ## Notes on Self-Archiving
 
 Before using this package, please check with your signed copyright form,
 which rights you have. Especially whether you may self-archive the preprint
-or the postprint. For more information on that, read on at 
+or the postprint. For more information on that, read on at
 <https://blogs.scientificamerican.com/information-culture/understanding-your-rights-pre-prints-post-prints-and-publisher-versions/>.
 
 None of the authors might be hold liable for copyright
@@ -118,17 +122,17 @@ violations by using this package.
 
 Sprinter states in his [Springer's Consent to Publish v3](http://resource-cms.springer.com/springer-cms/rest/v1/content/731196/data/v3):
 
-> Author may only post his/her own version, provided acknowledgment is given 
-> to the original source of publication and a link is inserted to the published 
+> Author may only post his/her own version, provided acknowledgment is given
+> to the original source of publication and a link is inserted to the published
 > article on Springer’s website.
-> The link must be provided by inserting the DOI number of the article in the 
+> The link must be provided by inserting the DOI number of the article in the
 > following sentence:
-> "The final publication is available at Springer via 
+> "The final publication is available at Springer via
 > `http://dx.doi.org/[insert DOI]`".
 The DOI (Digital Object Identifier) can be found at the bottom of the first
- page of the published paper.
+page of the published paper.
 
-This package uses `https://doi.org` as `http://dx.doi.org` 
+This package uses `https://doi.org` as `http://dx.doi.org`
 [is deprecated](https://www.doi.org/factsheets/DOIIdentifierSpecs.html).
 
 Thus, the proposed configuration for Springer is as follows:
@@ -147,7 +151,7 @@ Thus, the proposed configuration for Springer is as follows:
 
 ## Other publishers
 
-In general, one does not need to specify a certain publisher (or LaTeX document class). 
+In general, one does not need to specify a certain publisher (or LaTeX document class).
 The default setting just prints the note centered at the bottom of the first page.
 
 ```latex
@@ -189,12 +193,12 @@ Main author: [Achim D. Brucker](http://www.brucker.ch/)
 
 ### Contributors
 
-* [Oliver Kopp](https://github.com/koppor/)
+- [Oliver Kopp](https://github.com/koppor/)
 
 ## License
 
 If not otherwise stated, all sub-projects are dual-licensed under a
-2-clause BSD-style license and/or the LPPL version 1.3c or (at your 
+2-clause BSD-style license and/or the LPPL version 1.3c or (at your
 opinion) any later version.
 
 SPDX-License-Identifier: LPPL-1.3c+ OR BSD-2-Clause
