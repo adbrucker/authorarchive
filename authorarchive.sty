@@ -224,8 +224,7 @@
       \bgroup%
         \normallineskiplimit=0pt%
         \ifAA@nourl%
-           \ifx\AA@doi\@empty%
-             \hspace{0.585cm}
+           \ifx\AA@doi\@empty\relax%
            \else%
               \qrcode[hyperlink,height=1.17cm,padding]{https://doi.org/\AA@doi}%
             \fi%
@@ -234,6 +233,7 @@
         \fi%
       \egroup%
     }%
+    \ifAA@nourl\ifx\AA@doi\@empty\addtolength{\AA@width}{1.4cm}\fi\fi
     \parbox{\AA@width-1.4cm}{\authorcrfont%
       \ifAA@LNCS%
         \AA@publication, \AA@pageinfo  \AA@year. %
