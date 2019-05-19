@@ -1,8 +1,8 @@
 # Icons for the use with authorarchive
 
-This directory contains icons that might be used together with 
-the authorarchive LaTeX style. The use of these icons is 
-restricted by the respective copyright holders. 
+This directory contains icons that might be used together with
+the authorarchive LaTeX style. The use of these icons is
+restricted by the respective copyright holders.
 
 ## ORCID iD Icon
 
