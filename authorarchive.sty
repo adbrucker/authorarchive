@@ -92,17 +92,18 @@
 \newlength\AA@width
 
 \def\AA@bibBibTeX{\AA@bibtexdir/\AA@key.bib}
+\def\AA@bibBibTeXLong{\AA@bibtexdir/\AA@key.bibtex}
 \def\AA@bibWord{\AA@bibtexdir/\AA@key.word.xml}
 \def\AA@bibEndnote{\AA@bibtexdir/\AA@key.enw}
 \def\AA@bibRIS{\AA@bibtexdir/\AA@key.ris}
+
 \newboolean{AA@bibExists}
 \setboolean{AA@bibExists}{false}
 \IfFileExists{\AA@bibBibTeX}{\setboolean{AA@bibExists}{true}}{}
+\IfFileExists{\AA@bibBibTeXLong}{\setboolean{AA@bibExists}{true}}{}
 \IfFileExists{\AA@bibWord}{\setboolean{AA@bibExists}{true}}{}
 \IfFileExists{\AA@bibEndnote}{\setboolean{AA@bibExists}{true}}{}
 \IfFileExists{\AA@bibRIS}{\setboolean{AA@bibExists}{true}}{}
-
-
 
 \setlength\AA@x{1in+\hoffset+\oddsidemargin}
 
@@ -293,24 +294,28 @@
           \begin{itemize*}[label={}, itemjoin={,}]
             \IfFileExists{\AA@bibBibTeX}{%
               \item \attachandlink{\AA@bibBibTeX}[application/x-bibtex]{BibTeX entry of this paper}{\BibTeX}%
-            }{
-              \typeout{No file \AA@bibBibTeX found. Not embedded reference in BibTeX format.}
-            }
+            }{%
+              \IfFileExists{\AA@bibBibTeXLong}{%
+                \item \attachandlink[\AA@key.bib]{\AA@bibBibTeXLong}[application/x-bibtex]{BibTeX entry of this paper}{\BibTeX}%
+              }{%
+                \typeout{No file \AA@bibBibTeX{} (and no \AA@bibBibTeXLong) found. Not embedded reference in BibTeX format.}%
+              }%
+            }%
             \IfFileExists{\AA@bibWord}{%
               \item \attachandlink{\AA@bibWord}[application/xml]{XML entry of this paper (e.g., for Word 2007 and later)}{Word}%
-            }{
-              \typeout{No file \AA@bibWord found. Not embedded reference for Word 2007 and later.}
-            }
+            }{%
+              \typeout{No file \AA@bibWord{} found. Not embedded reference for Word 2007 and later.}%
+            }%
             \IfFileExists{\AA@bibEndnote}{%
               \item \attachandlink{\AA@bibEndnote}[application/x-endnote-refer]{Endnote entry of this paper}{EndNote}%
-            }{
-              \typeout{No file \AA@bibEndnote found. Not embedded reference in Endnote format.}
-            }
+            }{%
+              \typeout{No file \AA@bibEndnote{} found. Not embedded reference in Endnote format.}%
+            }%
             \IfFileExists{\AA@bibRIS}{%
               \item \attachandlink{\AA@bibRIS}[application/x-research-info-systems]{RIS entry of this paper}{RIS}%
-            }{
-              \typeout{No file \AA@bibRIS found. Not embedded reference in RIS format.}
-            }
+            }{%
+              \typeout{No file \AA@bibRIS{} found. Not embedded reference in RIS format.}%
+            }%
           \end{itemize*}\\
         }{%
           \PackageError{authorarchive}{No bibliographic files found. Specify option 'nobib' if this is intended.}

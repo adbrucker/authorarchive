@@ -13,6 +13,7 @@
   - [Embedding Bibliography Entries](#embedding-bibliography-entries)
   - [Notes on Self-Archiving](#notes-on-self-archiving)
     - [LNCS](#lncs)
+  - [Usage at arXiv.org](#usage-at-arxivorg)
   - [Other publishers](#other-publishers)
   - [Alternative Packages](#alternative-packages)
   - [Authors](#authors)
@@ -129,6 +130,7 @@ Sprinter states in his [Springer's Consent to Publish v3](http://resource-cms.sp
 > following sentence:
 > "The final publication is available at Springer via
 > `http://dx.doi.org/[insert DOI]`".
+
 The DOI (Digital Object Identifier) can be found at the bottom of the first
 page of the published paper.
 
@@ -148,6 +150,12 @@ Thus, the proposed configuration for Springer is as follows:
    nocopyright
  ]{authorarchive}
 ```
+
+## Usage at arXiv.org
+
+arXiv.org deletes bib files when submitting a pre print. As workaround, this package
+supports using the file suffix `.bibtex`. When no `.bib` is found, but a `.bibtex`
+file, this file is used and embedded as `.bib` file into the PDF.
 
 ## Other publishers
 
