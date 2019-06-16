@@ -1,5 +1,11 @@
 \documentclass[final, runningheads, USenglish, pdftex]{llncs}
 \usepackage[T1]{fontenc}
+
+% Quickly make vector_iD_icon.pdf available to authorarchive.
+% The global installation is described in ../README.md
+\usepackage{graphicx}
+\graphicspath{{../icons/}}
+
 \usepackage[LNCS,
    key=brucker-authorarchive-2016,
    year=2016,
@@ -8,13 +14,14 @@
    startpage={42},
    doi={00/00_00},
    doiText={0/00\_00},
+   orcidicon,
    nocopyright
  ]{../authorarchive}
 
 \usepackage{lipsum}
 
 \title{A Simple Example of the \texttt{authorarchive} Package for \LaTeX}
-\author{\protect\href{http://www.brucker.ch/}{Achim D. Brucker}}
+\author{\protect\href{http://www.brucker.ch/}{Achim D. Brucker}\orcidID{0000-0002-6355-1200}}
 \institute{Some Departement, Somewhere}
 
 \input{input/body}
