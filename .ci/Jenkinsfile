@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build PDFs') {
+            steps {
+                sh 'cd examples && (for i in *.tex; do pdflatex $i; pdflatex $i; pdflatex $i;  done)'
+            }
+        }
+    }
+} 
+
