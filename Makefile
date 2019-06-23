@@ -5,6 +5,9 @@ authorarchive.zip: * examples/*.tex
 	(cd examples; for i in *.tex; do pdflatex $$i; pdflatex $$i; pdflatex $$i; done)
 	cp examples/*.tex authorarchive/examples/
 	cp examples/*.pdf authorarchive/examples/
+	cp examples/*.config authorarchive/examples/
+	cp -r examples/bib authorarchive/examples/
+	cp -r examples/input authorarchive/examples/
 	cp *.sty authorarchive
 	cp LICENSE authorarchive
 	cp *.md authorarchive
