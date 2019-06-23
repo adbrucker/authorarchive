@@ -11,13 +11,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-## [1.1.1] - 2019-06-23
-
-- Added PDF versions of the examples to the CTAN upload.
+## [1.1.1] – 2019-06-23
 
 ### Added
 
-## [1.1.0] - 2019-06-23
+- Added PDF versions of the examples to the CTAN upload.
+
+## [1.1.0] – 2019-06-23
 
 ### Added
 
@@ -32,7 +32,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - ACM format adapted to [acmart](https://github.com/borisveytsman/acmart) v1.50.
 - Use [lastpage](https://ctan.org/pkg/lastpage) package instead of custom label.
 
-## 1.0.0 - 2018-02-21
+## 1.0.0 – 2018-02-21
 
 ### Added
 
