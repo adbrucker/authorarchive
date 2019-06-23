@@ -6,6 +6,7 @@ examples/IEEEtran.cls
 examples/llncs.cls
 examples/lni.cls
 examples/sig-alternate.cls
+examples/*.pdf
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
