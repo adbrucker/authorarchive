@@ -157,10 +157,22 @@
   }{}
   \renewcommand{\authorcrfont}{\scriptsize}
   \@ifclasswith{llncs}{a4paper}{%
-    \pdfpagesattr{/CropBox [92 114 523 780]}%
+    \ExplSyntaxOn
+    \@ifundefined{pdfmanagement_add:nnn}{%
+      \pdfpagesattr{/CropBox [92 114 523 780]}%
+    }{%
+      \pdfmanagement_add:nnn {Pages}{CropBox}{[92~114~523~780]}
+    }%
+    \ExplSyntaxOff
     \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},40){#1}}%
   }{%
-    \pdfpagesattr{/CropBox [92 65 523 731]}% LNCS page: 152x235 mm
+    \ExplSyntaxOn
+    \@ifundefined{pdfmanagement_add:nnn}{%
+      \pdfpagesattr{/CropBox [92 65 523 731]}% LNCS page: 152x235 mm
+    }{%
+      \pdfmanagement_add:nnn {Pages}{CropBox}{[92~62~523~731]}
+    }%
+    \ExplSyntaxOff
     \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},23){#1}}
   }
   \setlength{\AA@width}{\textwidth}
