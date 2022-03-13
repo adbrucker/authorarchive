@@ -213,8 +213,9 @@ opinion) any later version.
 SPDX-License-Identifier: LPPL-1.3c+ OR BSD-2-Clause
 ```
 
-## Master Repository
+## Upstream Repository
 
-The master git repository for this project is hosted by the [Software
-Assurance & Security Research Team](https://logicalhacking.com) at
+The upstream git repository, i.e., the single source of truth, for this 
+project is hosted by the 
+[Software Assurance & Security Research Team](https://logicalhacking.com) at
 <https://git.logicalhacking.com/adbrucker/authorarchive>.
