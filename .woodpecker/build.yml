@@ -3,7 +3,7 @@ pipeline:
     image: docker.io/texlive/texlive
     commands:
       - cd examples
-      - wget http://www.entcs.org/generic.zip
+      - curl http://www.entcs.org/generic.zip --output generic.zip
       - unzip -p generic.zip generic/entcs.cls > entcs.cls
       - rm generic.zip
       - latexmk -pdf
