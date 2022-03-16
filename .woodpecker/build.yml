@@ -2,4 +2,5 @@ pipeline:
   build:
     image: docker.io/texlive/texlive
     commands:
-      - latexmk -cd ../examples -pdf 
+      - cd examples
+      - latexmk -pdf
