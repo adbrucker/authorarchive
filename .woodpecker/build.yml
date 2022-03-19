@@ -10,6 +10,9 @@ pipeline:
       - rm generic.zip
       - latexmk -pdf
       - cp *.pdf $ARTIFACT_DIR
+      - cd $ARTIFACT_DIR
+      - cd ..
+      - ln -s * latest
   deploy:
     image: docker.io/drillster/drone-rsync
     settings:
