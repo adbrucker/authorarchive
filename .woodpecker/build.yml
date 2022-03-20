@@ -2,7 +2,7 @@ pipeline:
   build:
     image: docker.io/texlive/texlive
     commands:
-      - export ARTIFACT_DIR=$CI_WORKSPACE/.artifacts/$CI_REPO_NAME/$CI_BRANCH/$CI_BUILD_NUMBER/
+      - export ARTIFACT_DIR=$CI_WORKSPACE/.artifacts/$CI_REPO/$CI_BRANCH/$CI_BUILD_NUMBER/
       - mkdir -p $ARTIFACT_DIR
       - cd examples
       - curl http://www.entcs.org/generic.zip --output generic.zip
@@ -18,8 +18,8 @@ pipeline:
     settings:
       hosts: [ "ci.logicalhacking.com"]
       port: 22
-      source: .artifacts/$CI_REPO_NAME/*
-      target: $CI_REPO_NAME
+      source: .artifacts/$CI_REPO_OWNER/*
+      target: $CI_REPO_OWNER
       include: [ "**.*"]
       key: 
         from_secret: artifacts_ssh
