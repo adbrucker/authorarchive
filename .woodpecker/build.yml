@@ -24,5 +24,14 @@ pipeline:
       key: 
         from_secret: artifacts_ssh
       user: artifacts
-
+  notify:
+    image: drillster/drone-email
+    settings:
+      host: smtp.0x5f.org
+      username: woodpecker
+      password: 
+        from_secret: email
+      from: ci@logicalhacking.com
+    when:
+      status: [ changed, failure ]
 
