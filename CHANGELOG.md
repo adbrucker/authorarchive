@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+## [1.2.0] - 2022-04-24
+
+### Changed
+
 - If available, use pdfmanagement instead of \pdfpagesattr
 - Use hvlogos.sty instead of dtk-logos.sty
 
@@ -41,6 +45,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Initial version uploaded to CTAN.
 
-[Unreleased]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.1.1...HEAD
+[Unreleased]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.2.0...HEAD
+[1.2.0]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.1.1...v1.2.0
 [1.1.1]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.1.0...v1.1.1
 [1.1.0]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.0.0...v1.1.0
