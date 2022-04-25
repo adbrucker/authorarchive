@@ -15,13 +15,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- Fixed version information in ProvidesPackages.
 - fixed broken links in documentation and examples.
 
 ## [1.2.0] - 2022-04-24
 
 ### Changed
 
-- If available, use pdfmanagement instead of \pdfpagesattr
+- If available, use pdfmanagement instead of \pdfpagesattr.
 - Use hvlogos.sty instead of dtk-logos.sty
 
 ## [1.1.1] - 2019-06-23
