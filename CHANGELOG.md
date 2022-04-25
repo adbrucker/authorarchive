@@ -5,11 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+
+## [1.2.1] - 2022-04-25
+
+### Changed
+
+- Fixed version information in ProvidesPackages.
+
 ## [1.2.0] - 2022-04-24
 
 ### Changed
 
-- If available, use pdfmanagement instead of \pdfpagesattr
+- If available, use pdfmanagement instead of \pdfpagesattr.
 - Use hvlogos.sty instead of dtk-logos.sty
 
 ## [1.1.1] – 2019-06-23
@@ -39,7 +46,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Initial version uploaded to CTAN.
 
-[Unreleased]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.2.0...HEAD
+[1.2.1]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.2.0...v1.2.1
 [1.2.0]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.1.1...v1.2.0
 [1.1.1]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.1.0...v1.1.1
 [1.1.0]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.0.0...v1.1.0
