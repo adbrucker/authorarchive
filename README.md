@@ -19,7 +19,7 @@
   - [Authors](#authors)
     - [Contributors](#contributors)
   - [License](#license)
-  - [Master Repository](#master-repository)
+  - [Upstream Repository](#upstream-repository)
 
 <!-- tocstop -->
 
@@ -79,7 +79,7 @@ works nicely for Acta Informatica.
 | Option | Default | Meaning |
 | -- | -- | -- |
 | `bibtexdir`| `.` | The directory where the bibliography entries are listed. |
-| `baseurl` | <https://git.logicalhacking.com/adbrucker/authorarchive/src/master> | The URL used as prefix for building the links. |
+| `baseurl` | <https://git.logicalhacking.com/adbrucker/authorarchive/src/main> | The URL used as prefix for building the links. |
 | `suffix` | `.pdf` | The suffix to use at links. |
 | `publisher` | `UNKOWN PUBLISHER` | The name of the publisher. Default values are set by the series (`LNCS`, ...). |
 | `year` | `UNKOWN YEAR` | The year of the publication. |
