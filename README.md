@@ -12,7 +12,6 @@
     - [Key/Value Options](#key-value-options)
   - [Embedding Bibliography Entries](#embedding-bibliography-entries)
   - [Notes on Self-Archiving](#notes-on-self-archiving)
-    - [LNCS](#lncs)
   - [Usage at arXiv.org](#usage-at-arxivorg)
   - [Other publishers](#other-publishers)
   - [Alternative Packages](#alternative-packages)
@@ -118,8 +117,6 @@ or the postprint. For more information on that, read on at
 
 None of the authors might be hold liable for copyright
 violations by using this package.
-
-### LNCS
 
 ## Usage at arXiv.org
 
