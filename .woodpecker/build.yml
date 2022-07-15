@@ -9,6 +9,8 @@ pipeline:
       - unzip -p generic.zip generic/entcs.cls > entcs.cls
       - rm generic.zip
       - latexmk -pdf
+      - latexmk -C
+      - latexmk -lualatex
       - cp *.pdf $ARTIFACT_DIR
       - cd $ARTIFACT_DIR
       - cd ..
