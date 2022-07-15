@@ -5,20 +5,19 @@
 
 <!-- toc -->
 
-- [authorarchive](#authorarchive)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Boolean Switches](#boolean-switches)
-    - [Key/Value Options](#key-value-options)
-  - [Embedding Bibliography Entries](#embedding-bibliography-entries)
-  - [Notes on Self-Archiving](#notes-on-self-archiving)
-  - [Usage at arXiv.org](#usage-at-arxivorg)
-  - [Other publishers](#other-publishers)
-  - [Alternative Packages](#alternative-packages)
-  - [Authors](#authors)
-    - [Contributors](#contributors)
-  - [License](#license)
-  - [Upstream Repository](#upstream-repository)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Boolean Switches](#boolean-switches)
+  - [Key/Value Options](#keyvalue-options)
+- [Embedding Bibliography Entries](#embedding-bibliography-entries)
+- [Notes on Self-Archiving](#notes-on-self-archiving)
+- [Usage at arXiv.org](#usage-at-arxivorg)
+- [Other publishers](#other-publishers)
+- [Alternative Packages](#alternative-packages)
+- [Authors](#authors)
+  - [Contributors](#contributors)
+- [License](#license)
+- [Upstream Repository](#upstream-repository)
 
 <!-- tocstop -->
 
