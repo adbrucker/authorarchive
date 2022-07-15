@@ -18,7 +18,7 @@
 %
 \RequirePackage{ifthen}
 \RequirePackage[inline]{enumitem}
-\RequirePackage{graphicx}
+\RequirePackage{orcidlink}
 \RequirePackage{eso-pic}
 \RequirePackage{intopdf}
 \RequirePackage{kvoptions}
@@ -71,7 +71,7 @@
     }%
     % Pass the option to package color.
     % Again it is better to expand \CurrentOption.
-    \expandafter\PassOptionsToPackage\expandafter{\CurrentOption}{color}%
+    \expandafter\PassOptionsToPackage\expandafter{\CurrentOption}{color}%vim
   \else
     % Package color does not take options with values.
     % We provide the standard LaTeX error.
@@ -148,8 +148,7 @@
 %%%% LNCS
 \ifAA@LNCS%
   \ifAA@orcidicon%
-    \renewcommand{\orcidID}[1]{\href{https://orcid.org/#1}{%
-      \textsuperscript{\,\includegraphics[height=2\fontcharht\font`A]{vector_iD_icon}}}}
+    \renewcommand{\orcidID}[1]{\orcidlink{#1}}
   \else\relax\fi%
 %  
   \ifthenelse{\equal{\AA@publisher}{UNKNOWN PUBLISHER}}{%

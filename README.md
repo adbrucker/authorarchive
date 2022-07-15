@@ -23,9 +23,8 @@
 
 ## Installation
 
-Copy `authorarchive.sty` and the directory `icons` in a directory that
-is searched by LaTeX (e.g., either your `texmf` tree or the local
-directory with your main LaTeX file).
+Copy `authorarchive.sty` in a directory that is searched by LaTeX (e.g., either
+your `texmf` tree or the local directory with your main LaTeX file).
 
 ## Usage
 
