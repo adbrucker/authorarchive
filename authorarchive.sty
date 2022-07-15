@@ -80,12 +80,20 @@
 }
 \ProcessKeyvalOptions*
 
-% Provide command for dynamic configuration seutp
+% Provide command for dynamic configuration setup
 \def\authorsetup{\kvsetkeys{AA}}
 
 % Load local configuration
 \InputIfFileExists{authorarchive.config}{}{}
 
+%  define proxy command for setting PDF attributes
+\ExplSyntaxOn
+\@ifundefined{pdfmanagement_add:nnn}{%
+    \newcommand{\AA@pdfpagesattribute}[2]{\pdfpagesattr{/#1 #2}}%
+ }{%
+    \newcommand{\AA@pdfpagesattribute}[2]{\pdfmanagement_add:nnn{Pages}{#1}{#2}}%
+ }%
+\ExplSyntaxOff
 
 \newlength\AA@x
 \newlength\AA@y
@@ -156,23 +164,11 @@
   }{}
   \renewcommand{\authorcrfont}{\scriptsize}
   \@ifclasswith{llncs}{a4paper}{%
-    \ExplSyntaxOn
-    \@ifundefined{pdfmanagement_add:nnn}{%
-      \pdfpagesattr{/CropBox [92 114 523 780]}%
-    }{%
-      \pdfmanagement_add:nnn {Pages}{CropBox}{[92~114~523~780]}
-    }%
-    \ExplSyntaxOff
+    \AA@pdfpagesattribute{CropBox}{[92 114 523 780]}%
     \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},40){#1}}%
   }{%
-    \ExplSyntaxOn
-    \@ifundefined{pdfmanagement_add:nnn}{%
-      \pdfpagesattr{/CropBox [92 65 523 731]}% LNCS page: 152x235 mm
-    }{%
-      \pdfmanagement_add:nnn {Pages}{CropBox}{[92~62~523~731]}
-    }%
-    \ExplSyntaxOff
-    \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},23){#1}}
+    \AA@pdfpagesattribute{CropBox}{[92 65 523 731]}%
+    \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},23){#1}}%
   }
   \setlength{\AA@width}{\textwidth}
   \setcounter{tocdepth}{2}
@@ -185,7 +181,7 @@
   }{}
   \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},35){#1}}
   \renewcommand{\authorcrfont}{\scriptsize}
-  \pdfpagesattr{/CropBox [70 65 526.378 748.15]} % TODO
+  \AA@pdfpagesattribute{CropBox}{[70 65 526.378 748.15]}
   \setlength{\AA@width}{\textwidth}
   \setcounter{tocdepth}{2}
 \fi
