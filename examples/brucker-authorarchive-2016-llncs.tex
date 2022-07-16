@@ -1,7 +1,9 @@
 \documentclass[final, runningheads, USenglish]{llncs}
 \usepackage[T1]{fontenc}
 
-\usepackage[LNCS,
+\usepackage{../authorarchive}
+\authorsetup{
+   LNCS,
    key=brucker-authorarchive-2016,
    year=2016,
    publication={Anonymous et al.\ (eds). Proceedings of the International
@@ -11,8 +13,12 @@
    doiText={0/00\_00},
    orcidicon,
    nocopyright
- ]{../authorarchive}
+}
 
+\authorsetup{
+   publication={Anonymous 6\textsuperscript{th}  et al.\ (eds). Proceedings of the International
+       Conference on LaTeX-Hacks, LNCS~42. Some Publisher},
+}
 \usepackage{lipsum}
 
 \title{A Simple Example of the \texttt{authorarchive} Package for \LaTeX}

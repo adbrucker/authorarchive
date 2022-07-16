@@ -31,6 +31,25 @@ your `texmf` tree or the local directory with your main LaTeX file).
 A simple use for LNCS-formatted papers is as follows:
 
 ```tex
+\usepackage{authorarchive}
+\authorsetup{LNCS,
+   key=brucker-authorarchive-2016,
+   year=2016,
+   publication={Anonymous et al.\ (eds). Proceedings of the International
+       Conference on LaTeX-Hacks, LNCS~42. Some Publisher}
+   startpage={42},
+   doi={00/00_00},
+   doiText={0/00\_00},
+   nocopyright
+}
+```
+
+Note that this is the preferred way of configuring the package, as it allows,
+e.g., for LaTeX commands in options. Only if no (complex) LaTeX commands are
+used, the configuration can also be passes as package options (this is a
+limitation of the way LaTeX is passing options to packages):
+
+```tex
 \usepackage[LNCS,
    key=brucker-authorarchive-2016,
    year=2016,
@@ -40,7 +59,7 @@ A simple use for LNCS-formatted papers is as follows:
    doi={00/00_00},
    doiText={0/00\_00},
    nocopyright
- ]{authorarchive}
+]{authorarchive}
 ```
 
 The following layout-styles are pre-defined:

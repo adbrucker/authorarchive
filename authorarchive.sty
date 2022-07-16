@@ -80,8 +80,34 @@
 }
 \ProcessKeyvalOptions*
 
+\newcommand{\AA@defIncludeFiles}{
+  \def\AA@bibBibTeX{\AA@bibtexdir/\AA@key.bib}
+  \def\AA@bibBibTeXLong{\AA@bibtexdir/\AA@key.bibtex}
+  \def\AA@bibWord{\AA@bibtexdir/\AA@key.word.xml}
+  \def\AA@bibEndnote{\AA@bibtexdir/\AA@key.enw}
+  \def\AA@bibRIS{\AA@bibtexdir/\AA@key.ris}
+}
+\AA@defIncludeFiles
+
+\newboolean{AA@bibExists}
+\setboolean{AA@bibExists}{false}
+\newcommand{\AA@defIncludeSwitches}{
+  \IfFileExists{\AA@bibBibTeX}{\setboolean{AA@bibExists}{true}}{}
+  \IfFileExists{\AA@bibBibTeXLong}{\setboolean{AA@bibExists}{true}}{}
+  \IfFileExists{\AA@bibWord}{\setboolean{AA@bibExists}{true}}{}
+  \IfFileExists{\AA@bibEndnote}{\setboolean{AA@bibExists}{true}}{}
+  \IfFileExists{\AA@bibRIS}{\setboolean{AA@bibExists}{true}}{}
+}
+\AA@defIncludeSwitches
+
+
 % Provide command for dynamic configuration setup
-\def\authorsetup{\kvsetkeys{AA}}
+% \def\authorsetup{\kvsetkeys{AA}}
+\newcommand{\authorsetup}[1]{%
+  \kvsetkeys{AA}{#1}
+  \AA@defIncludeFiles
+  \AA@defIncludeSwitches
+}
 
 % Load local configuration
 \InputIfFileExists{authorarchive.config}{}{}
@@ -98,20 +124,6 @@
 \newlength\AA@x
 \newlength\AA@y
 \newlength\AA@width
-
-\def\AA@bibBibTeX{\AA@bibtexdir/\AA@key.bib}
-\def\AA@bibBibTeXLong{\AA@bibtexdir/\AA@key.bibtex}
-\def\AA@bibWord{\AA@bibtexdir/\AA@key.word.xml}
-\def\AA@bibEndnote{\AA@bibtexdir/\AA@key.enw}
-\def\AA@bibRIS{\AA@bibtexdir/\AA@key.ris}
-
-\newboolean{AA@bibExists}
-\setboolean{AA@bibExists}{false}
-\IfFileExists{\AA@bibBibTeX}{\setboolean{AA@bibExists}{true}}{}
-\IfFileExists{\AA@bibBibTeXLong}{\setboolean{AA@bibExists}{true}}{}
-\IfFileExists{\AA@bibWord}{\setboolean{AA@bibExists}{true}}{}
-\IfFileExists{\AA@bibEndnote}{\setboolean{AA@bibExists}{true}}{}
-\IfFileExists{\AA@bibRIS}{\setboolean{AA@bibExists}{true}}{}
 
 \setlength\AA@x{1in+\hoffset+\oddsidemargin}
 
