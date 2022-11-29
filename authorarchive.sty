@@ -310,26 +310,26 @@
           \hfill
           \begin{itemize*}[label={}, itemjoin={,}]
             \IfFileExists{\AA@bibBibTeX}{%
-              \item \attachandlink{\AA@bibBibTeX}[application/x-bibtex]{BibTeX entry of this paper}{\BibTeX}%
+              \item \expanded{\attachandlink[\AA@key.bib]{\AA@bibBibTeX}[application/x-bibtex]{BibTeX entry of this paper}{\BibTeX}}%
             }{%
               \IfFileExists{\AA@bibBibTeXLong}{%
-                \item \attachandlink[\AA@key.bib]{\AA@bibBibTeXLong}[application/x-bibtex]{BibTeX entry of this paper}{\BibTeX}%
+                \item \expanded{\attachandlink[\AA@key.bib]{\AA@bibBibTeXLong}[application/x-bibtex]{BibTeX entry of this paper}{\BibTeX}}%
               }{%
                 \typeout{No file \AA@bibBibTeX{} (and no \AA@bibBibTeXLong) found. Not embedded reference in BibTeX format.}%
               }%
             }%
             \IfFileExists{\AA@bibWord}{%
-              \item \attachandlink{\AA@bibWord}[application/xml]{XML entry of this paper (e.g., for Word 2007 and later)}{Word}%
+              \item \expanded{\attachandlink[\AA@key.word.xml]{\AA@bibWord}[application/xml]{XML entry of this paper (e.g., for Word 2007 and later)}{Word}}%
             }{%
               \typeout{No file \AA@bibWord{} found. Not embedded reference for Word 2007 and later.}%
             }%
             \IfFileExists{\AA@bibEndnote}{%
-              \item \attachandlink{\AA@bibEndnote}[application/x-endnote-refer]{Endnote entry of this paper}{EndNote}%
+              \item \expanded{\attachandlink[\AA@key.enw]{\AA@bibEndnote}[application/x-endnote-refer]{Endnote entry of this paper}{EndNote}}%
             }{%
               \typeout{No file \AA@bibEndnote{} found. Not embedded reference in Endnote format.}%
             }%
             \IfFileExists{\AA@bibRIS}{%
-              \item \attachandlink{\AA@bibRIS}[application/x-research-info-systems]{RIS entry of this paper}{RIS}%
+              \item \expanded{\attachandlink[\AA@key.ris]{\AA@bibRIS}[application/x-research-info-systems]{RIS entry of this paper}{RIS}}%
             }{%
               \typeout{No file \AA@bibRIS{} found. Not embedded reference in RIS format.}%
             }%
