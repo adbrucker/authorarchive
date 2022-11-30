@@ -25,7 +25,8 @@
 \RequirePackage{hyperref}
 \RequirePackage{calc}
 \RequirePackage{qrcode}
-\DeclareRobustCommand\BibTeX{Bib\TeX}
+\RequirePackage{etoolbox}
+\newrobustcmd\BibTeX{Bib\TeX}
 %
 %Better url breaking
 \g@addto@macro{\UrlBreaks}{\UrlOrds}

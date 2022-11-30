@@ -12,7 +12,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 - use style `orcidlink.sty` instead of local logo for the ORCID icon.
-- `\authorsetup{}` is now the preferred way for configuring the package
+- `\authorsetup{}` is now the preferred way for configuring the package.
+- use style `etoolbox.sty` providing `\newrobustcommand{}`, which is 
+  used instead of `\DeclareRobustCommand{}` for defining BibTeX-logo
+  (avoids problems with `lni.cls`).
 
 ## [1.2.1] - 2022-04-25
 
