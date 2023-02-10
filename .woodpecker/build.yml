@@ -5,7 +5,7 @@ pipeline:
       - export ARTIFACT_DIR=$CI_WORKSPACE/.artifacts/$CI_REPO/$CI_BRANCH/$CI_BUILD_NUMBER/
       - mkdir -p $ARTIFACT_DIR
       - cd examples
-      - curl http://www.entcs.org/generic.zip --output generic.zip
+      - curl https://www.entcs.org/generic.zip --output generic.zip
       - unzip -p generic.zip generic/entcs.cls > entcs.cls
       - rm generic.zip
       - latexmk -pdf
