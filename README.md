@@ -159,7 +159,7 @@ The default setting just prints the note centered at the bottom of the first pag
 ```
 
 Still, for some used document classes (e.g., `lncs` and `acmart`) there are specific
-package options available hat produce an alternative layout.  
+package options available hat produce an alternative layout.
 
 ## Alternative Packages
 
