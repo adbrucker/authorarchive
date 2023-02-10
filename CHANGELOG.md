@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+## [1.3.0] - 2023-02-10
+
+### Changed
+
 - use style `orcidlink.sty` instead of local logo for the ORCID icon.
 - `\authorsetup{}` is now the preferred way for configuring the package.
 - use style `etoolbox.sty` providing `\newrobustcommand{}`, which is 
@@ -57,8 +61,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Initial version uploaded to CTAN.
-
-[Unreleased]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.2.1...HEAD
+[Unreleased]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.3.0...HEAD
+[1.3.0]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.3.0...v1.3.0
 [1.2.1]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.2.0...v1.2.1
 [1.2.0]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.1.1...v1.2.0
 [1.1.1]: https://git.logicalhacking.com/adbrucker/authorarchive/compare/v1.1.0...v1.1.1
