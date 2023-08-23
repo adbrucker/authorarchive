@@ -141,7 +141,7 @@
 }
 
 
-
+\AtBeginDocument{
 %%%% sig-alternate.cls
 \ifAA@ACM%
   \ifthenelse{\equal{\AA@publisher}{UNKNOWN PUBLISHER}}{%
@@ -220,7 +220,7 @@
   \setlength{\AA@width}{\textwidth}
   \setcounter{tocdepth}{2}
 \fi
-%
+}
 
 \hypersetup{%
   draft         = false,
