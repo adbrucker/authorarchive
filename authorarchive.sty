@@ -134,14 +134,14 @@
 \setlength{\AA@width}{\textwidth}
 
 \def\AA@pageinfo{}
+
+\AtBeginDocument{
 \ifthenelse{\equal{\AA@startpage}{UNKNOWN START PAGE}}{%
 }{%
   \setcounter{page}{\AA@startpage}%
   \def\AA@pageinfo{pp. \thepage--\pageref{\aa@lastpage}, }
 }
 
-
-\AtBeginDocument{
 %%%% sig-alternate.cls
 \ifAA@ACM%
   \ifthenelse{\equal{\AA@publisher}{UNKNOWN PUBLISHER}}{%
