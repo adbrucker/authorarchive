@@ -137,13 +137,13 @@
 \setlength{\AA@width}{\textwidth}
 
 \def\AA@pageinfo{}
+
+\AtBeginDocument{
 \ifthenelse{\equal{\AA@startpage}{UNKNOWN START PAGE}}{%
 }{%
   \setcounter{page}{\AA@startpage}%
   \def\AA@pageinfo{pp. \thepage--\pageref{\aa@lastpage}, }
 }
-
-
 
 %%%% sig-alternate.cls
 \ifAA@ACM%
@@ -223,7 +223,7 @@
   \setlength{\AA@width}{\textwidth}
   \setcounter{tocdepth}{2}
 \fi
-%
+}
 
 \hypersetup{%
   draft         = false,
