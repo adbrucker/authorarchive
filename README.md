@@ -23,7 +23,10 @@
 
 ## Installation
 
-Copy `authorarchive.sty` in a directory that is searched by LaTeX (e.g., either
+The package is [available on CTAN](https://ctan.org/pkg/authorarchive) and is
+packaged in both MiKTeX and TeX Live. Thus, no manual installation should be
+requried. In case you still want to install the package manually, copy
+`authorarchive.sty` in a directory that is searched by LaTeX (e.g., either
 your `texmf` tree or the local directory with your main LaTeX file).
 
 ## Usage
