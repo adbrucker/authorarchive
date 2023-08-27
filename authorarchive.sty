@@ -26,9 +26,10 @@
 \RequirePackage{calc}
 \RequirePackage{qrcode}
 \RequirePackage{etoolbox}
-\providerobustcmd{\BibTeX}{{%
-    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX%
-}}
+\AtBeginDocument{%
+    \providerobustcmd{\BibTeX}{{%
+        \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX%
+}}}
 %
 %Better url breaking
 \g@addto@macro{\UrlBreaks}{\UrlOrds}
