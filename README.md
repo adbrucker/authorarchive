@@ -32,7 +32,8 @@ A simple use for LNCS-formatted papers is as follows:
 
 ```tex
 \usepackage{authorarchive}
-\authorsetup{LNCS,
+\authorsetup{
+   publisher=LNCS,
    key=brucker-authorarchive-2016,
    year=2016,
    publication={Anonymous et al.\ (eds).
