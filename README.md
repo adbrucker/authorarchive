@@ -9,7 +9,7 @@
 - [Usage](#usage)
   - [Boolean Switches](#boolean-switches)
   - [Key/Value Options](#keyvalue-options)
-- [Embedding Bibliography Entries](#embedding-bibliography-entries)
+- [Embedding Bibliographic Entries](#embedding-bibliographic-entries)
 - [Notes on Self-Archiving](#notes-on-self-archiving)
 - [Usage at arXiv.org](#usage-at-arxivorg)
 - [Other publishers](#other-publishers)
@@ -35,11 +35,14 @@ A simple use for LNCS-formatted papers is as follows:
 
 ```tex
 \usepackage{authorarchive}
-\authorsetup{LNCS,
+\authorsetup{
+   publisher=LNCS,
    key=brucker-authorarchive-2016,
    year=2016,
-   publication={Anonymous et al.\ (eds). Proceedings of the International
-       Conference on LaTeX-Hacks, LNCS~42. Some Publisher}
+   publication={Anonymous et al.\ (eds).
+       Proceedings of the International Conference on LaTeX-Hacks,
+       LNCS~42.
+       Some Publisher}
    startpage={42},
    doi={00/00_00},
    doiText={0/00\_00},
@@ -56,8 +59,10 @@ limitation of the way LaTeX is passing options to packages):
 \usepackage[LNCS,
    key=brucker-authorarchive-2016,
    year=2016,
-   publication={Anonymous et al.\ (eds). Proceedings of the International
-       Conference on LaTeX-Hacks, LNCS~42. Some Publisher}
+   publication={Anonymous et al.\ (eds).
+       Proceedings of the International Conference on LaTeX-Hacks,
+       LNCS~42.
+       Some Publisher}
    startpage={42},
    doi={00/00_00},
    doiText={0/00\_00},
@@ -115,9 +120,9 @@ define key value options dynamically. Moreover, if a file
 loaded automatically. This allows for configuring defaults (e.g., the
 baseurl) easily.
 
-## Embedding Bibliography Entries
+## Embedding Bibliographic Entries
 
-Mostly, it is hard for scientists to find the correct bibtex entry for
+Mostly, it is hard for scientists to find the correct BibTeX entry for
 a paper.  One solution to this issue is to embed the respective `.bib`
 (BibTeX, for LaTeX users), `.enw` (Endnote), `.ris`, or `.word.xml`
 (Word 2007 or later) file in the PDF directly. In case any of these
@@ -153,8 +158,10 @@ The default setting just prints the note centered at the bottom of the first pag
 \usepackage[
    key=brucker-authorarchive-2017,
    year=2017,
-   publication={Anonymous et al.\ (eds). Proceedings of the International
-       Conference on LaTeX-Hacks, CEUR-WS Vol~42, 2017.}
+   publication={Anonymous et al.\ (eds).
+       Proceedings of the International Conference on LaTeX-Hacks,
+       CEUR-WS Vol~42,
+       2017.}
    startpage={42},
    doi={10.1039/authorarchive},
    nocopyright
