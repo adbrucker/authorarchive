@@ -162,7 +162,7 @@
   \ifthenelse{\equal{\AA@publisher}{UNKNOWN PUBLISHER}}{%
     \setkeys{AA}{publisher=ACM}
   }{}
-  \renewcommand{\authorat}[1]{\AtPageUpperLeft{\put(\LenToUnit{\AA@x},\LenToUnit{0.2cm-\paperheight}){#1}}}
+  \renewcommand{\authorat}[1]{\AtPageUpperLeft{\put(\LenToUnit{\AA@x},\LenToUnit{0.4cm-\paperheight}){#1}}}
   \setlength{\AA@width}{\textwidth}
 \fi
 %
@@ -178,10 +178,10 @@
   \renewcommand{\authorcrfont}{\scriptsize}
   \@ifclasswith{llncs}{a4paper}{%
     \AA@pdfpagesattribute{CropBox}{[92 114 523 780]}%
-    \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},40){#1}}%
+    \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},41){#1}}%
   }{%
     \AA@pdfpagesattribute{CropBox}{[92 65 523 731]}%
-    \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},23){#1}}%
+    \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},24){#1}}%
   }
   \setlength{\AA@width}{\textwidth}
   \setcounter{tocdepth}{2}
@@ -192,7 +192,7 @@
   \ifthenelse{\equal{\AA@publisher}{UNKNOWN PUBLISHER}}{%
     \setkeys{AA}{publisher=GI}
   }{}
-  \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},35){#1}}
+  \renewcommand{\authorat}[1]{\put(\LenToUnit{\AA@x},30){#1}}
   \renewcommand{\authorcrfont}{\scriptsize}
   \AA@pdfpagesattribute{CropBox}{[70 65 526.378 748.15]}
   \setlength{\AA@width}{\textwidth}
@@ -239,21 +239,21 @@
 \AddToShipoutPicture*{%
   \setlength{\unitlength}{1mm}%
   \savebox{\AA@authoratBox}{%
-    \parbox{1.4cm}{%
+    \parbox{1.8cm}{%
       \bgroup%
         \normallineskiplimit=0pt%
         \ifAA@nourl%
            \ifx\AA@doi\@empty\relax%
            \else%
-              \qrcode[hyperlink,height=1.17cm,padding]{https://doi.org/\AA@doi}%
+              \qrcode[hyperlink,height=1.4cm,tight]{https://doi.org/\AA@doi}%
             \fi%
         \else%
-          \qrcode[hyperlink,height=1.17cm,padding]{\AA@baseurl/\AA@key\AA@suffix}%
+          \qrcode[hyperlink,height=1.4cm,tight]{\AA@baseurl/\AA@key\AA@suffix}%
         \fi%
       \egroup%
     }%
-    \ifAA@nourl\ifx\AA@doi\@empty\addtolength{\AA@width}{1.4cm}\fi\fi
-    \parbox{\AA@width-1.4cm}{\authorcrfont%
+    \ifAA@nourl\ifx\AA@doi\@empty\addtolength{\AA@width}{1.8cm}\fi\fi
+    \parbox{\AA@width-1.8cm}{\authorcrfont%
       \ifAA@LNCS%
         \AA@publication, \AA@pageinfo  \AA@year. %
         \ifAA@nocopyright\else

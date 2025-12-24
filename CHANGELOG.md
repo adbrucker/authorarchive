@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+- Improved spacing of self-archiving text and QR code.
 - Use `hologo`-package to produce BibTeX logo; fixes wrong kerning in logo. 
 - Fixed LNI example to work with latest version of `lni.cls`.
 - `startpage` and publisher information correctly handled at `\authorsetup{}`
