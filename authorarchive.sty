@@ -26,10 +26,7 @@
 \RequirePackage{calc}
 \RequirePackage{qrcode}
 \RequirePackage{etoolbox}
-\AtBeginDocument{%
-    \providerobustcmd{\BibTeX}{{%
-        \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX%
-}}}
+\RequirePackage{hologo}
 %
 %Better url breaking
 \g@addto@macro{\UrlBreaks}{\UrlOrds}
@@ -314,10 +311,10 @@
           \hfill
           \begin{itemize*}[label={}, itemjoin={,}]
             \IfFileExists{\AA@bibBibTeX}{%
-              \item \expanded{\attachandlink[\AA@key.bib]{\AA@bibBibTeX}[application/x-bibtex]{BibTeX entry of this paper}{\BibTeX}}%
+              \item \expanded{\attachandlink[\AA@key.bib]{\AA@bibBibTeX}[application/x-bibtex]{BibTeX entry of this paper}{\hologo{BibTeX}}}%
             }{%
               \IfFileExists{\AA@bibBibTeXLong}{%
-                \item \expanded{\attachandlink[\AA@key.bib]{\AA@bibBibTeXLong}[application/x-bibtex]{BibTeX entry of this paper}{\BibTeX}}%
+                \item \expanded{\attachandlink[\AA@key.bib]{\AA@bibBibTeXLong}[application/x-bibtex]{BibTeX entry of this paper}{\hologo{BibTeX}}}%
               }{%
                 \typeout{No file \AA@bibBibTeX{} (and no \AA@bibBibTeXLong) found. Not embedded reference in BibTeX format.}%
               }%
