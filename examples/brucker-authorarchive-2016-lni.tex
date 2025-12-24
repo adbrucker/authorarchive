@@ -1,27 +1,22 @@
+\PassOptionsToPackage{inline}{enumitem}
+\PassOptionsToPackage{bookmarks=false}{hyperref}
 \documentclass[english]{lni}
 \usepackage[T1]{fontenc}
-\AtEndPreamble{
-  \usepackage{../authorarchive}
-  \authorsetup{
-     LNI,
-     key=brucker-authorarchive-2016,
-     year=2016,
-     publication={Anonymous et al.\ (eds). Proceedings of the International
-         Conference on LaTeX-Hacks. Some Publisher},
-     startpage={42},
-     doi={00/00_00},
-     doiText={0/00\_00},
-     nocopyright
-   }
+\usepackage{../authorarchive}
+\authorsetup{
+  LNI,
+  key=brucker-authorarchive-2016,
+  year=2016,
+  publication={Anonymous et al.\ (eds). Proceedings of the International Conference on LaTeX-Hacks. Some Publisher},
+  startpage={42},
+  doi={00/00_00},
+  doiText={0/00\_00},
+  nocopyright
 }
 \usepackage{lipsum}
 
 \title{A Simple Example of the \texttt{authorarchive} Package for \LaTeX}
-\author{%
-    \protect\href{http://www.brucker.ch/}{Achim D. Brucker}\\
-    Some Department\\
-    Somewhere
-}
+\author{Achim D. Brucker}{adbrucker@0x5f.org}{0000-0002-6355-1200}
 
 \begin{document}
   \maketitle{}
@@ -29,6 +24,9 @@
   \begin{abstract}
       \lipsum[1-2]
   \end{abstract}
+  \begin{keywords}
+    key word
+  \end{keywords}
 
   \section{Introduction}
   \lipsum[1-4]

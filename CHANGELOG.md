@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+- Fixed LNI example to work with latest version of `lni.cls`.
 - `startpage` and publisher information correctly handled at `\authorsetup{}`
 
 ## [1.3.0] - 2023-02-10
@@ -30,7 +31,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 - Fixed version information in ProvidesPackages.
-- fixed broken links in documentation and examples.
+- Fixed broken links in documentation and examples.
 
 ## [1.2.0] - 2022-04-24
 
