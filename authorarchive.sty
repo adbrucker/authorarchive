@@ -257,7 +257,8 @@
       \ifAA@LNCS%
         \AA@publication, \AA@pageinfo  \AA@year. %
         \ifAA@nocopyright\else
-          \textcopyright~\AA@year~\AA@publisher.
+          \ifthenelse{\equal{\AA@publisher}{UNKNOWN PUBLISHER}}%
+            {\textcopyright~\AA@year.}{\textcopyright~\AA@year~\AA@publisher.} %
         \fi
         This is the author's
         version of the work. It is posted
@@ -265,13 +266,13 @@
           at \url{\AA@baseurl/\AA@key\AA@suffix} %
         \fi
         \ifAA@nocopyright\relax\else
-          by permission of \AA@publisher{}
+          by permission of \ifthenelse{\equal{\AA@publisher}{UNKNOWN PUBLISHER}}{the publisher}{\AA@publisher{}} %
         \fi
         for your personal use.
         \ifx\AA@doi\@empty%
           \relax
         \else
-          The final publication is available at Springer via
+          The final publication is available at 
           \ifx\AA@doiText\@empty%
             \url{https://doi.org/\AA@doi}.
           \else
@@ -280,7 +281,8 @@
         \fi
       \else
         \ifAA@nocopyright\relax\else
-          \textcopyright~\AA@year~\AA@publisher. %
+          \ifthenelse{\equal{\AA@publisher}{UNKNOWN PUBLISHER}}%
+            {\textcopyright~\AA@year.}{\textcopyright~\AA@year~\AA@publisher.} %
         \fi%
         This is the author's
         version of the work. It is posted
@@ -288,7 +290,7 @@
           at \url{\AA@baseurl/\AA@key\AA@suffix} %
         \fi
         \ifAA@nocopyright\relax\else
-          by permission of \AA@publisher{} %
+          by permission of \ifthenelse{\equal{\AA@publisher}{UNKNOWN PUBLISHER}}{the publisher}{\AA@publisher{}} %
         \fi
         for your personal use. Not for redistribution. The definitive
         version was published in \emph{\AA@publication}, \AA@pageinfo \AA@year%
